@@ -11,20 +11,16 @@ import UIKit
 
 
 class ViewController: UIViewController {
-    struct Post{
-        var title: String
-    }
-    var post = Post(title: "Posts")
-    private lazy var actionButton: UIButton = {
+    /*private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Перейти", for: .normal)
         button.setTitleColor(.systemMint, for: .normal)
         
         return button
-    }()
+    }()*/
 
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
 
         
@@ -48,16 +44,16 @@ class ViewController: UIViewController {
         ])
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-    }
+    }*/
     
-    @objc func buttonPressed(_ sender: UIButton){
-        let postViewController = PostViewController()
+    /*@objc func buttonPressed(_ sender: UIButton){
+        let postViewController = ViewController()
         
         postViewController.modalTransitionStyle = .coverVertical
         postViewController.modalPresentationStyle = .fullScreen
         
         present(postViewController, animated: true)
-    }
+    }*/
     
     
 }
