@@ -6,7 +6,7 @@ class InfoViewController: UIViewController {
     private var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Нажми ", for: .normal)
+        button.setTitle("Press ", for: .normal)
         button.setTitleColor(.systemMint, for: .normal)
         
         return button
@@ -17,7 +17,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        view.backgroundColor = .systemPurple
         view.addSubview(actionButton)
         let saveArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([

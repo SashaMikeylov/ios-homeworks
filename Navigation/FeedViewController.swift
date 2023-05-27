@@ -5,7 +5,7 @@ import UIKit
 
 
 class FeedViewController: UIViewController{
-    
+    var post = Post(title: "My post")
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -38,22 +38,19 @@ class FeedViewController: UIViewController{
         
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_sender:)), for: .touchUpInside)
-        struct Post{
-            var title: String
-        }
         
-        var post = Post(title: "Posts")
+        
+        
+        
         
     }
     
     
     @objc func buttonPressed(_sender: UIButton){
             let postViewController = PostViewController()
+            postViewController.titlePost = post.title
+            navigationController?.pushViewController(postViewController, animated: true)
             
-            postViewController.modalTransitionStyle = .coverVertical
-            postViewController.modalPresentationStyle = .fullScreen
-            
-            present(postViewController, animated: true)
     }
     
     

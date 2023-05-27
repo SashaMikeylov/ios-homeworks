@@ -28,29 +28,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.title = "News"
         feedViewController.view.backgroundColor = .systemYellow
         
-        let infoViewController = InfoViewController()
-        infoViewController.title = "Info"
-        infoViewController.view.backgroundColor = .systemRed
         
         
         
         
         
-        //let profileNavigationController = UINavigationController()
+       
         //let tapeNavigationController = UINavigationController()
         
         
-        infoViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
+       
         profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
         
-        let controllers = [profileViewController, feedViewController, infoViewController]
+        let controllers = [profileViewController, feedViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
         
         
-        
+       
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         

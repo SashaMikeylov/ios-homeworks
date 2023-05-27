@@ -15,6 +15,7 @@
 		247E513C2A0ABC0300E3C6AB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */; };
 		247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E513D2A0D314C00E3C6AB /* InfoViewController.swift */; };
 		247E51622A1D378900E3C6AB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51612A1D378900E3C6AB /* PostViewController.swift */; };
+		247E51642A226AE200E3C6AB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51632A226AE200E3C6AB /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		247E513D2A0D314C00E3C6AB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		247E51612A1D378900E3C6AB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		247E51632A226AE200E3C6AB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */,
 				247E51612A1D378900E3C6AB /* PostViewController.swift */,
 				247E513D2A0D314C00E3C6AB /* InfoViewController.swift */,
+				247E51632A226AE200E3C6AB /* Post.swift */,
 				247E512E2A094CD500E3C6AB /* Assets.xcassets */,
 				247E51302A094CD500E3C6AB /* LaunchScreen.storyboard */,
 				247E51332A094CD500E3C6AB /* Info.plist */,
@@ -148,6 +151,7 @@
 				247E512A2A094CD000E3C6AB /* ViewController.swift in Sources */,
 				247E51262A094CD000E3C6AB /* AppDelegate.swift in Sources */,
 				247E51282A094CD000E3C6AB /* SceneDelegate.swift in Sources */,
+				247E51642A226AE200E3C6AB /* Post.swift in Sources */,
 				247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
