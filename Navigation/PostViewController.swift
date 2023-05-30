@@ -12,19 +12,16 @@ class PostViewController: UIViewController{
         
         view.backgroundColor = .blue
         
-        
-        
-        
-       
-        
-    
-        
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(closeTVC))
         navigationItem.rightBarButtonItem = button
     }
     @objc func closeTVC(){
         let infoViewController = InfoViewController()
-        navigationController?.pushViewController(infoViewController,  animated: true)
+        
+        infoViewController.modalTransitionStyle = .coverVertical
+        infoViewController.modalPresentationStyle = .automatic
+        
+        present(infoViewController, animated: true)
     }
     
 }

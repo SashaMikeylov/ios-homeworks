@@ -35,12 +35,13 @@ class InfoViewController: UIViewController {
     
     @objc func buttonPressed(_sender: Any){
         
-        let alertController = UIAlertController(title: "Регистрация", message: "Введите свое имя: ", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Вход", message: "Выберите действие ", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Далее", style: .default){(action) in
-            let text = alertController.textFields?.first?.text
-            print(text ?? print("Попробуй еще раз "))
+            print("Добро пожаловать !")
         }
-        alertController.addTextField(configurationHandler: nil)
+        let alertAction1 = UIAlertAction(title: "Отмена", style: .cancel){(action1) in print("Нажмите далее для входа !")}
+        
+        alertController.addAction(alertAction1)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion:  nil)
     }

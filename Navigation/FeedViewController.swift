@@ -38,11 +38,6 @@ class FeedViewController: UIViewController{
         
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_sender:)), for: .touchUpInside)
-        
-        
-        
-        
-        
     }
     
     
