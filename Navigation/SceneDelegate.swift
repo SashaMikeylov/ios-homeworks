@@ -20,9 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         
-        let profileViewController = ViewController()
+        let profileViewController = ProfileViewController()
         profileViewController.title = "Profile"
-        profileViewController.view.backgroundColor = .systemPurple
         
         let feedViewController = FeedViewController()
         feedViewController.title = "News"
@@ -37,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let tapeNavigationController = UINavigationController()
         
         
-       
+        
         profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
         

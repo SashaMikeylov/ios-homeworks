@@ -5,6 +5,7 @@ import UIKit
 class PostViewController: UIViewController{
     
     var titlePost: String = "Postik"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

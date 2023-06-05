@@ -16,22 +16,24 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemPurple
         view.addSubview(actionButton)
-        let saveArea = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-        actionButton.trailingAnchor.constraint(equalTo: saveArea.trailingAnchor,constant: -20 ),
-        
-        actionButton.leadingAnchor.constraint(equalTo: saveArea.leadingAnchor, constant: 20),
-        
-        actionButton.centerYAnchor.constraint(equalTo: saveArea.centerYAnchor),
-        actionButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
+        setUp()
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_sender: )), for: .touchUpInside)
     }
     
+    private func setUp(){
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+        actionButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,constant: -20 ),
+        
+        actionButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+        
+        actionButton.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+        actionButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
     
     @objc func buttonPressed(_sender: Any){
         
