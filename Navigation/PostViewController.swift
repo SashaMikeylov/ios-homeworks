@@ -8,9 +8,8 @@ class PostViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         self.navigationItem.title = titlePost
-        
         view.backgroundColor = .blue
         
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(closeTVC))
