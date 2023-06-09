@@ -10,7 +10,7 @@ class PostViewController: UIViewController{
         super.viewDidLoad()
     
         self.navigationItem.title = titlePost
-        view.backgroundColor = .blue
+        view.backgroundColor = .cyan
         
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(closeTVC))
         navigationItem.rightBarButtonItem = button
