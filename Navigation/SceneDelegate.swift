@@ -40,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
         
+        
         let controllers = [profileViewController, feedViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)

@@ -3,16 +3,6 @@ import UIKit
 
 
 class ProfileHeaderView: UIView{
-      
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setLayer()
-        setUp()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private lazy var profileName: UILabel = {
        let nameLabel = UILabel()
@@ -28,6 +18,11 @@ class ProfileHeaderView: UIView{
         let avatar = UIView()
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.backgroundColor = .white
+        avatar.layer.cornerRadius = 50
+        avatar.layer.contents = UIImage(named:"profileAvatar")?.cgImage
+        avatar.layer.borderWidth = 3
+        avatar.layer.borderColor = UIColor.white.cgColor
+        avatar.layer.masksToBounds = true
 
         return avatar
     }()
@@ -47,6 +42,11 @@ class ProfileHeaderView: UIView{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
 
         return button
     }()
@@ -68,9 +68,25 @@ class ProfileHeaderView: UIView{
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.cornerRadius = 12
+        textField.placeholder = "Write your status"
+        
 
         return textField
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .lightGray
+        
+        setUp()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 //-------------------------------------SetupConstraint----------------------------------------
 
   func setUp(){
@@ -83,44 +99,37 @@ class ProfileHeaderView: UIView{
       addSubview(profileName)
       
       NSLayoutConstraint.activate([
-        profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
-        profileName.topAnchor.constraint(equalTo: topAnchor,constant: 27)
-      ])
-      
-      NSLayoutConstraint.activate([
+            profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
+            profileName.topAnchor.constraint(equalTo: topAnchor,constant: 27),
+          
+          
             profileName.topAnchor.constraint(equalTo: self.topAnchor,constant: 27),
-            profileName.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-      ])
+            profileName.centerXAnchor.constraint(equalTo: self.centerXAnchor),
       
-        NSLayoutConstraint.activate([
+      
             profileAvatar.heightAnchor.constraint(equalToConstant: 100),
             profileAvatar.widthAnchor.constraint(equalToConstant: 100),
             profileAvatar.topAnchor.constraint(equalTo: self.topAnchor,constant: 16),
             profileAvatar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             //profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -16)
-            profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52)
-        ])
+            profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52),
+            
       
-        NSLayoutConstraint.activate([
-            profileStatus.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 16)
-        ])
+            profileStatus.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 16),
+      
 
-        NSLayoutConstraint.activate([
             profileButton.heightAnchor.constraint(equalToConstant: 50),
             profileButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             //profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 34),
             profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 70),
             profileButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16)
+            profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
 
-        ])
-
-        NSLayoutConstraint.activate([
+    
             buttonText.centerXAnchor.constraint(equalTo: profileButton.centerXAnchor),
-            buttonText.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor)
-        ])
+            buttonText.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor),
+        
 
-        NSLayoutConstraint.activate([
             statusField.heightAnchor.constraint(equalToConstant: 40),
             statusField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             statusField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -128,27 +137,8 @@ class ProfileHeaderView: UIView{
             statusField.topAnchor.constraint(equalTo: self.topAnchor, constant: 110)
         ])
     }
-//----------------------------------SetupLayer-------------------------------------------
 
-    private func setLayer(){
-
-        profileButton.layer.cornerRadius = 4
-        profileButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        profileButton.layer.shadowRadius = 4
-        profileButton.layer.shadowColor = UIColor.black.cgColor
-        profileButton.layer.shadowOpacity = 0.7
-
-        profileAvatar.layer.cornerRadius = 50
-        profileAvatar.layer.contents = UIImage(named:"profileAvatar")?.cgImage
-        profileAvatar.layer.borderWidth = 3
-        profileAvatar.layer.borderColor = UIColor.white.cgColor
-        profileAvatar.layer.masksToBounds = true
-
-        statusField.layer.borderWidth = 1
-        statusField.layer.borderColor = UIColor.black.cgColor
-        statusField.layer.cornerRadius = 12
-
-    }
+    
 
 //--------------------------------------------------------------------------------------
     @objc private func buttonPressed(){
