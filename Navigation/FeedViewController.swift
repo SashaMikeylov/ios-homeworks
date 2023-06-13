@@ -48,13 +48,14 @@ class FeedViewController: UIViewController{
         view.backgroundColor = .systemIndigo
         view.addSubview(postStack)
         setUp()
+        
     }
     
     private func setUp(){
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            postStack.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor,constant: 20),
-            postStack.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor,constant: -20),
+            postStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            postStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             postStack.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor,constant: 20),
             postStack.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor,constant: -20)
             

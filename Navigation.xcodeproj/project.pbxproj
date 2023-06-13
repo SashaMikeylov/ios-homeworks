@@ -18,6 +18,7 @@
 		247E51642A226AE200E3C6AB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51632A226AE200E3C6AB /* Post.swift */; };
 		247E51672A2743BC00E3C6AB /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51662A2743BC00E3C6AB /* ProfileHeaderView.swift */; };
 		247E51692A2743F000E3C6AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51682A2743F000E3C6AB /* ProfileViewController.swift */; };
+		249CDD992A386F87002C4EA5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249CDD982A386F87002C4EA5 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		247E51632A226AE200E3C6AB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		247E51662A2743BC00E3C6AB /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		247E51682A2743F000E3C6AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		249CDD982A386F87002C4EA5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				247E51662A2743BC00E3C6AB /* ProfileHeaderView.swift */,
 				247E51682A2743F000E3C6AB /* ProfileViewController.swift */,
+				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				247E51642A226AE200E3C6AB /* Post.swift in Sources */,
 				247E51692A2743F000E3C6AB /* ProfileViewController.swift in Sources */,
 				247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */,
+				249CDD992A386F87002C4EA5 /* LogInViewController.swift in Sources */,
 				247E51672A2743BC00E3C6AB /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

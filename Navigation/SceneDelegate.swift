@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         let tabBarController = UITabBarController()
         
+        let logInViewController = LogInViewController()
         
-        let profileViewController = ProfileViewController()
-        profileViewController.title = "Profile"
+        
+//        let profileViewController = ProfileViewController()
+//        profileViewController.title = "Profile"
         
         let feedViewController = FeedViewController()
         feedViewController.title = "News"
@@ -35,13 +37,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        
         //let tapeNavigationController = UINavigationController()
         
+        tabBarController.tabBar.backgroundColor = .systemGray5
+        feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         
         
-        profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
         
-        
-        let controllers = [profileViewController, feedViewController]
+        let controllers =  [feedViewController, logInViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
