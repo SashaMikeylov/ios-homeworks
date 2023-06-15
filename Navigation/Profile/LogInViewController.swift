@@ -14,21 +14,11 @@ class LogInViewController: UIViewController {
         let logo = UIView()
         logo.layer.contents = UIImage(named: "logIn")?.cgImage
         logo.translatesAutoresizingMaskIntoConstraints = false
-        
+
         return logo
     }()
+
     
-    private lazy var ll: UIView = {
-        let d = UIView()
-        d.translatesAutoresizingMaskIntoConstraints = false
-        d.backgroundColor = .systemGray6
-        d.layer.borderColor = UIColor.lightGray.cgColor
-        d.layer.borderWidth = 0.5
-        d.layer.cornerRadius = 10
-        
-        
-        return d
-    }()
     private lazy var emailFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
@@ -40,10 +30,15 @@ class LogInViewController: UIViewController {
         feed.layer.cornerRadius = 10
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
-    
+        feed.keyboardType = UIKeyboardType.default
+        feed.returnKeyType = UIReturnKeyType.done
+        feed.clearButtonMode = UITextField.ViewMode.whileEditing
+        feed.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        feed.delegate = self
+
         return feed
     }()
-    
+
     private lazy var passworFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
@@ -56,78 +51,144 @@ class LogInViewController: UIViewController {
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
         feed.isSecureTextEntry = true
-    
-        
-        
+        feed.keyboardType = UIKeyboardType.default
+        feed.returnKeyType = UIReturnKeyType.done
+        feed.clearButtonMode = UITextField.ViewMode.whileEditing
+        feed.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        feed.delegate = self
+
+
         return feed
     }()
-    
+
     private lazy var logButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
-        button.backgroundColor = .black
+        button.backgroundColor = .systemBlue
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(UIImage(named: "logButton"), for: .normal)
-        
-        
-        
+        button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
+
+
         return button
+    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsVerticalScrollIndicator = true
+        view.showsHorizontalScrollIndicator = false
+        view.backgroundColor = .white
+        view.center = view.center
+        //view.contentSize = CGSize(width: 1000, height: 1000)
+
+        return view
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        tabBarController?.tabBar.isHidden = true
-        
         
         
         addSub()
         setUp()
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        setupKeyboardObservers()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //removeKeyboard()
     }
     
     private func addSub(){
        
-        view.addSubview(vkLogo)
-        view.addSubview(emailFeed)
-        view.addSubview(passworFeed)
-        view.addSubview(logButton)
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(vkLogo)
+        scrollView.addSubview(emailFeed)
+        scrollView.addSubview(passworFeed)
+        scrollView.addSubview(logButton)
         
     }
 //---------------------------------------------setUp-------------------------------------------------------
     
     private func setUp(){
+        
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+
+            
             vkLogo.heightAnchor.constraint(equalToConstant: 100),
             vkLogo.widthAnchor.constraint(equalToConstant: 100),
-            vkLogo.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 120),
-            vkLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            vkLogo.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 120),
+            vkLogo.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            
             
             emailFeed.topAnchor.constraint(equalTo: vkLogo.bottomAnchor,constant: 120),
             emailFeed.heightAnchor.constraint(equalToConstant: 50),
-            emailFeed.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            emailFeed.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
+            emailFeed.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16),
+            emailFeed.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 380),
+
             passworFeed.topAnchor.constraint(equalTo: emailFeed.bottomAnchor),
             passworFeed.heightAnchor.constraint(equalToConstant: 50),
-            passworFeed.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            passworFeed.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
+            passworFeed.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16),
+            passworFeed.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 380),
+
             logButton.topAnchor.constraint(equalTo: passworFeed.bottomAnchor, constant: 16),
             logButton.heightAnchor.constraint(equalToConstant: 50),
-            logButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            logButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            ll.topAnchor.constraint(equalTo: vkLogo.bottomAnchor,constant: 120),
-            ll.heightAnchor.constraint(equalToConstant: 50),
-            ll.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            ll.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            logButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16),
+            logButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 380),
+
+
         ])
     }
 //----------------------------------------------------------------------------------------------------- ---
+    private func setupKeyboardObservers(){
+        
+        let noficiationCenter = NotificationCenter.default
+        
+        noficiationCenter.addObserver(self, selector: #selector(self.willShowKeyboard(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        noficiationCenter.addObserver(self, selector: #selector(self.willHIdeKeyboard(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func removeKeyboard(){
+        let notificion = NotificationCenter.default
+        notificion.removeObserver(self)
+    }
+    @objc func willShowKeyboard(_ notification: NSNotification){
+        let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
+        scrollView.contentInset.bottom += keyboardHeight ?? 0.0
+        
+    }
     
+    @objc func willHIdeKeyboard(_ notification: NSNotification){
+        scrollView.contentInset.bottom = 0.0
+    }
+    
+    @objc func actionButton(){
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+    }
 }
 
+extension LogInViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}

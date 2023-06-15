@@ -27,7 +27,9 @@ class ProfileViewController: UIViewController {
     
      override func viewDidLoad(){
         super.viewDidLoad()
-         view.backgroundColor = .white 
+         title = "Profile"
+         view.backgroundColor = .white
+         tabBarController?.tabBar.isHidden = false
          view.addSubview(profileHeaderView)
          view.addSubview(profileButton)
          setUp()

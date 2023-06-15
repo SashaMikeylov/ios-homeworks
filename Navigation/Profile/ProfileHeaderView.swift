@@ -72,7 +72,10 @@ class ProfileHeaderView: UIView{
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
         textField.placeholder = "Write your status"
-        
+        textField.delegate = self
+        textField.keyboardType = .default
+        textField.returnKeyType = .done
+        textField.clearButtonMode = .whileEditing
 
         return textField
     }()
@@ -111,7 +114,6 @@ class ProfileHeaderView: UIView{
             profileAvatar.widthAnchor.constraint(equalToConstant: 100),
             profileAvatar.topAnchor.constraint(equalTo: self.topAnchor,constant: 16),
             profileAvatar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            //profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -16)
             profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52),
             
       
@@ -120,7 +122,6 @@ class ProfileHeaderView: UIView{
 
             profileButton.heightAnchor.constraint(equalToConstant: 50),
             profileButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            //profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 34),
             profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 70),
             profileButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
@@ -156,4 +157,11 @@ class ProfileHeaderView: UIView{
 
 }
 
+extension ProfileHeaderView: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}
 
