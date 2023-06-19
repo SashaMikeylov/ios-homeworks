@@ -10,6 +10,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    
     private lazy var vkLogo: UIView = {
         let logo = UIView()
         logo.layer.contents = UIImage(named: "logIn")?.cgImage

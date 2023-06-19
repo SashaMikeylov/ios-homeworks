@@ -2,9 +2,11 @@
 import UIKit
 
 
-class ProfileHeaderView: UIView{
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
-    private lazy var profileName: UILabel = {
+    static let id = "ProfileHeaderView"
+    
+    let profileName: UILabel = {
        let nameLabel = UILabel()
         nameLabel.text = "Sanya Mikeylov "
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -14,7 +16,7 @@ class ProfileHeaderView: UIView{
         return nameLabel
     }()
 
-    private lazy var profileAvatar: UIView = {
+    let profileAvatar: UIView = {
         let avatar = UIView()
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.backgroundColor = .white
@@ -27,7 +29,7 @@ class ProfileHeaderView: UIView{
         return avatar
     }()
 
-    private lazy var profileStatus: UILabel = {
+    let profileStatus: UILabel = {
         let label = UILabel()
         label.text = "waiting for something..."
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +53,7 @@ class ProfileHeaderView: UIView{
         return button
     }()
 
-    private lazy var buttonText: UILabel = {
+    let buttonText: UILabel = {
         let label = UILabel()
         label.text = "Show status"
         label.textColor = .white
@@ -61,7 +63,7 @@ class ProfileHeaderView: UIView{
         return label
     }()
 
-    private lazy var statusField: UITextField = {
+   private lazy var statusField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .white
@@ -80,12 +82,13 @@ class ProfileHeaderView: UIView{
         return textField
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .lightGray
         
         setUp()
     }
+        
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
