@@ -5,14 +5,40 @@ import UIKit
 
 
 class FeedViewController: UIViewController{
+    
     var post = Post(title: "My post")
-    private lazy var actionButton: UIButton = {
+    
+    private lazy var postButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(" Перейти на пост ", for: .normal)
+        button.backgroundColor = .systemPink
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
         return button
     }()
     
+    private lazy var postButton1: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemPink
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var postStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.clipsToBounds = true
+        
+        stack.spacing = 10
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        
+        stack.addArrangedSubview(postButton)
+        stack.addArrangedSubview(postButton1)
+        
+        return stack
+    }()
     
     
     override func viewDidLoad() {
@@ -20,24 +46,19 @@ class FeedViewController: UIViewController{
         
         title = "Posts"
         view.backgroundColor = .systemIndigo
-        view.addSubview(actionButton)
-       setUp()
-           
-        actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        view.addSubview(postStack)
+        setUp()
         
-        
-        actionButton.addTarget(self, action: #selector(buttonPressed(_sender:)), for: .touchUpInside)
     }
     
     private func setUp(){
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            actionButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
+            postStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            postStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            postStack.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor,constant: 20),
+            postStack.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor,constant: -20)
             
-            actionButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor,constant: -20),
-            
-            actionButton.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor),
-            actionButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
