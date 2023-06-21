@@ -98,15 +98,18 @@ class PostTableViewCell: UITableViewCell {
         postUIView.addSubview(viewsView)
     }
     
+//--------------------------------------------setUp--------------------------------------------------------
+    
     private func setUp(){
         NSLayoutConstraint.activate([
             
             contentView.heightAnchor.constraint(equalToConstant: 600),
-
+            
             postUIView.topAnchor.constraint(equalTo:  topAnchor),
             postUIView.bottomAnchor.constraint(equalTo: bottomAnchor),
             postUIView.rightAnchor.constraint(equalTo: rightAnchor),
             postUIView.leftAnchor.constraint(equalTo: leftAnchor),
+            
             
             titlePost.topAnchor.constraint(equalTo: postUIView.topAnchor, constant: 16),
             titlePost.leftAnchor.constraint(equalTo: postUIView.leftAnchor, constant: 16),
@@ -128,13 +131,8 @@ class PostTableViewCell: UITableViewCell {
             viewsView.rightAnchor.constraint(equalTo: postUIView.rightAnchor, constant: -16),
             viewsView.bottomAnchor.constraint(equalTo: postUIView.bottomAnchor, constant: -10)
         ])
-        
-       
-        
-            
-        
     }
-    
+//---------------------------------------------------------------------------------------------------------
 
         
     func configure(post: Post) {

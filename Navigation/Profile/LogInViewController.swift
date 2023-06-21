@@ -156,7 +156,8 @@ class LogInViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             
             contenView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contenView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            contenView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            contenView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contenView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             contenView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
             contenView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),

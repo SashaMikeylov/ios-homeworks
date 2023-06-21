@@ -47,7 +47,6 @@ class ProfileViewController: UIViewController {
     func tuneTableView(){
         tablePost.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
         tablePost.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.id)
-        tablePost.estimatedRowHeight = 600
         
         
         tablePost.dataSource = self
