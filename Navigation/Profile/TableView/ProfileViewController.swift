@@ -80,14 +80,19 @@ extension ProfileViewController: UITableViewDataSource {
             
             return cell
         }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+        let postik = posts[indexPath.row]
+        cell.configure(post: postik)
+        
+        
+        return cell
+        
+    }
+           
+        
+      
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-            let postik = posts[indexPath.row]
-            cell.configure(post: postik)
-            
-            
-            return cell
-        }
     
        
 }
@@ -98,11 +103,25 @@ extension ProfileViewController: UITableViewDelegate {
         250
     }
     
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.id) as? ProfileHeaderView else { fatalError() }
         
         return header
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.row == posts.count {
+            let photosViewController = PhotosViewController ()
+            navigationController?.pushViewController(photosViewController, animated: true)
+        }
+        
+        
+        
+    }
+    
 }
 
 

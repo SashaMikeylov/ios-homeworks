@@ -163,18 +163,21 @@ class PhotosTableViewCell: UITableViewCell{
    private func configure(){
         let photos = Photos.make()
         photos.forEach{
+            
+            
             switch $0.id{
             case 1:
-                firtsPhoto.layer.contents =  $0.photo.cgImage
+                firtsPhoto.layer.contents =  UIImage(named: $0.photoName)?.cgImage
             case 2:
-                secondPhoto.layer.contents = $0.photo.cgImage
+                secondPhoto.layer.contents = UIImage(named: $0.photoName)?.cgImage
             case 3:
-                thirdPhoto.layer.contents = $0.photo.cgImage
+                thirdPhoto.layer.contents = UIImage(named: $0.photoName)?.cgImage
             case 4:
-                fourthPhoto.layer.contents = $0.photo.cgImage
+                fourthPhoto.layer.contents = UIImage(named: $0.photoName)?.cgImage
             default:
-                fatalError()
+                print("It's not prewie photos =(")
             }
+
         }
     }
 
