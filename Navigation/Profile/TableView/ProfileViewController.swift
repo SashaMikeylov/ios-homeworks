@@ -4,6 +4,8 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var posts = Posts.makePost()
+   
+    
     
     private let tablePost: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -36,6 +38,7 @@ class ProfileViewController: UIViewController {
     private func setUp(){
         let safeAresGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            
             tablePost.topAnchor.constraint(equalTo: safeAresGuide.topAnchor),
             tablePost.rightAnchor.constraint(equalTo: safeAresGuide.rightAnchor),
             tablePost.leftAnchor.constraint(equalTo: safeAresGuide.leftAnchor),
@@ -46,7 +49,9 @@ class ProfileViewController: UIViewController {
     
     func tuneTableView(){
         tablePost.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
+        tablePost.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.id)
         tablePost.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.id)
+       
         
         
         tablePost.dataSource = self
@@ -62,20 +67,29 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        
+        posts.count + 1
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let postik = posts[indexPath.row]
-        cell.configure(post: postik)
         
-        
-        
-        return cell
-    }
+        if indexPath.row == posts.count{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id, for: indexPath) as? PhotosTableViewCell else {fatalError()}
+            
+            return cell
+        }
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+            let postik = posts[indexPath.row]
+            cell.configure(post: postik)
+            
+            
+            return cell
+        }
     
-    
+       
 }
 
 extension ProfileViewController: UITableViewDelegate {
