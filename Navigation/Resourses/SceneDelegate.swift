@@ -18,26 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         let tabBarController = UITabBarController()
+    
         
         let logInViewController = LogInViewController()
-        
-        
-//        let profileViewController = ProfileViewController()
-//        profileViewController.title = "Profile"
-        
         let feedViewController = FeedViewController()
         feedViewController.title = "News"
         feedViewController.view.backgroundColor = .systemYellow
         
         
-        
-        
-        
-        
-       
-        //let tapeNavigationController = UINavigationController()
-        
         tabBarController.tabBar.backgroundColor = .systemGray5
+        
         feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
         logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         

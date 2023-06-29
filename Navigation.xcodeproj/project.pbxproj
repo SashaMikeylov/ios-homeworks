@@ -24,6 +24,7 @@
 		24B9FEAC2A433B7E00E546AD /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */; };
 		24B9FEAF2A44C42A00E546AD /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */; };
 		24B9FEB32A44ECA400E546AD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEB22A44ECA400E546AD /* PhotoCell.swift */; };
+		24C119462A4980E70079F210 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C119452A4980E70079F210 /* LaunchScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		24B9FEB22A44ECA400E546AD /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		24C119452A4980E70079F210 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */,
 				247E51612A1D378900E3C6AB /* PostViewController.swift */,
 				247E513D2A0D314C00E3C6AB /* InfoViewController.swift */,
+				24C119452A4980E70079F210 /* LaunchScreenViewController.swift */,
 				247E512E2A094CD500E3C6AB /* Assets.xcassets */,
 				247E51302A094CD500E3C6AB /* LaunchScreen.storyboard */,
 				247E51332A094CD500E3C6AB /* Info.plist */,
@@ -212,6 +215,7 @@
 				247E51282A094CD000E3C6AB /* SceneDelegate.swift in Sources */,
 				247E51642A226AE200E3C6AB /* Post.swift in Sources */,
 				247E51692A2743F000E3C6AB /* ProfileViewController.swift in Sources */,
+				24C119462A4980E70079F210 /* LaunchScreenViewController.swift in Sources */,
 				24B9FEAC2A433B7E00E546AD /* PhotosTableViewCell.swift in Sources */,
 				247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */,
 				24B9FEAF2A44C42A00E546AD /* PhotosViewController.swift in Sources */,

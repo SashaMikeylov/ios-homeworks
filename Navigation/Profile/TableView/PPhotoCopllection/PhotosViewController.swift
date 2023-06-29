@@ -33,11 +33,15 @@ class PhotosViewController: UIViewController {
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
     
     private func tuneView(){
         view.backgroundColor = .white
         title = "Photo Gallery"
         view.addSubview(photoCollection)
+        
     }
     private func tuneCollection(){
         photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.id)
@@ -75,6 +79,4 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
 }
 
-extension PhotosViewController: UICollectionViewDelegate {
 
-}

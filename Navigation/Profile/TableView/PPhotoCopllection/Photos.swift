@@ -41,6 +41,8 @@ struct Photos{
         Photo(id: 23, photoName: "23"),
         Photo(id: 24, photoName: "24"),
         Photo(id: 25, photoName: "25"),
+        Photo(id: 26, photoName: "26"),
+        Photo(id: 27, photoName: "27"),
 
     ]}
 }
