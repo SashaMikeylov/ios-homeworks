@@ -19,7 +19,12 @@ class ProfileViewController: UIViewController {
     
      override func viewDidLoad(){
          super.viewDidLoad()
-         view.backgroundColor = .white
+         
+         #if DEBUG
+         view.backgroundColor = .blue
+         #else
+         view.backgroundColor = .black
+         #endif
          title = "Posts"
          tabBarController?.tabBar.isHidden = true
          self.navigationController?.navigationBar.prefersLargeTitles = true
