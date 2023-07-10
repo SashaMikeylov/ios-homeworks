@@ -5,7 +5,7 @@
 //  Created by Денис Кузьминов on 22.06.2023.
 //
 
-import Foundation
+
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
