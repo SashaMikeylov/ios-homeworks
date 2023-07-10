@@ -1,10 +1,11 @@
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
-    var posts = Posts.makePost()
-   
+    
+    
     
     
     private let tablePost: UITableView = {
