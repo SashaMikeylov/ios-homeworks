@@ -19,6 +19,7 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .systemPurple
         view.addSubview(actionButton)
         setUp()
+        title = "wdwd"
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_sender: )), for: .touchUpInside)
     }
