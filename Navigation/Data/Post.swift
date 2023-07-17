@@ -5,39 +5,26 @@
 
 
 import UIKit
+import iOSIntPackage
 
 public struct Post {
     public let author: String
     public var description: String
-    public let image: UIImage
+    public let image: String
     public var views: Int
     public var likes: Int
+    
 }
 
-//public struct Posts {
-//
-//     static func makePost() -> [Post]{
-//        [
-//            .init(author: "Game of Trones - Fan", description: jhon, image: UIImage(named: "Jhon")!, views: 108600, likes: 34679),
-//
-//            .init(author: "Game center", description: witcher, image: UIImage(named: "Witcher")!, views: 23456, likes: 1234),
-//
-//            Post(author: "Apple", description: apple, image: UIImage(named: "Apple")!, views: 508747, likes: 257859),
-//
-//            Post(author: "Social news", description: ilon, image: UIImage(named: "Ilon")!, views: 45677, likes: 6897)
-//        ]
-//
-//    }
-//
-//}
 
-let post = Post(author: "Game of Trones - Fan", description: jhon, image: UIImage(named: "Jhon")!, views: 108600, likes: 34679)
 
-let post1 = Post(author: "Game center", description: witcher, image: UIImage(named: "Witcher")!, views: 23456, likes: 1234)
+let post = Post(author: "Game of Trones - Fan", description: jhon, image: "Jhon", views: 108600, likes: 34679)
 
-let post2 = Post(author: "Apple", description: apple, image: UIImage(named: "Apple")!, views: 508747, likes: 257859)
+let post1 = Post(author: "Game center", description: witcher, image: "Witcher", views: 23456, likes: 1234)
 
-let post3 = Post(author: "Social news", description: ilon, image: UIImage(named: "Ilon")!, views: 45677, likes: 6897)
+let post2 = Post(author: "Apple", description: apple, image:  "Apple", views: 508747, likes: 257859)
+
+let post3 = Post(author: "Social news", description: ilon, image: "Ilon", views: 45677, likes: 6897)
 
 public var posts = [post, post1, post2, post3]
 

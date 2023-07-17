@@ -8,8 +8,11 @@
 import StorageService
 import Foundation
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+    
+    private let processor = ImageProcessor()
     
     static let id = "PostTableViewCell"
     
@@ -35,9 +38,11 @@ class PostTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         
+        
         return image
     }()
     
+   
     
     let descriptionPost: UILabel = {
         let label = UILabel()
@@ -45,6 +50,7 @@ class PostTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemGray
         label.numberOfLines = 0
+        
         
         return label
     }()
@@ -90,6 +96,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func addSub(){
+        
         
         contentView.addSubview(postUIView)
         postUIView.addSubview(titlePost)
@@ -138,12 +145,15 @@ class PostTableViewCell: UITableViewCell {
         
     func configure(post: Post) {
         titlePost.text = post.author
-        postView.image = post.image
         descriptionPost.text = post.description
         likesView.text = "Likes: \(post.likes)"
         viewsView.text = "Views: \(post.views)"
-    }
-
         
+        if let image = UIImage(named: post.image ){
+            processor.processImage(sourceImage: image, filter: .chrome , completion: {
+                image in postView.image = image
+            })
+        }
+    }
 }
 
