@@ -1,7 +1,7 @@
 
 
 import UIKit
-import SnapKit
+
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
@@ -106,44 +106,41 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
       addSubview(statusField)
       addSubview(profileName)
       
+      NSLayoutConstraint.activate([
+        
+        profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
+        profileName.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+        
+        profileAvatar.heightAnchor.constraint(equalToConstant: 100),
+        profileAvatar.widthAnchor.constraint(equalToConstant: 100),
+        profileAvatar.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+        profileAvatar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+        profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52),
+        
+        profileStatus.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 16),
+        
+        profileButton.heightAnchor.constraint(equalToConstant: 50),
+        profileButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 70),
+        profileButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+        profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+        
+        buttonText.centerXAnchor.constraint(equalTo: profileButton.centerXAnchor),
+        buttonText.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor),
+        
+        statusField.heightAnchor.constraint(equalToConstant: 40),
+        statusField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+        statusField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        statusField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 130),
+        statusField.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+                                  
+                
       
-      profileName.snp.makeConstraints{ make in
-          make.centerX.equalToSuperview()
-          make.top.equalToSuperview().offset(27)
-      }
-
-      profileAvatar.snp.makeConstraints{ make in
-          make.height.equalTo(100)
-          make.width.equalTo(100)
-          make.top.equalToSuperview().offset(16)
-          make.left.equalToSuperview().offset(16)
-          make.top.equalTo(profileButton).offset(52)
-      }
+      ])
       
-      profileStatus.snp.makeConstraints{ make in
-          make.left.equalTo(profileAvatar).offset(110)
-          make.bottom.equalTo(profileName).offset(40)
-      }
-
-      profileButton.snp.makeConstraints{ make in
-          make.height.equalTo(50)
-          make.left.equalToSuperview().offset(16)
-          make.right.equalToSuperview().offset(-16)
-          make.top.equalToSuperview().offset(170)
-      }
       
-      buttonText.snp.makeConstraints{ make in
-          make.centerX.equalTo(profileButton)
-          make.centerY.equalTo(profileButton)
-      }
-
-      statusField.snp.makeConstraints{ make in
-          make.height.equalTo(40)
-          make.right.equalToSuperview().offset(-16)
-          make.centerX.equalToSuperview()
-          make.left.equalToSuperview().offset(130)
-          make.top.equalToSuperview().offset(110)
-      }
+         
+      
     }
 //--------------------------------------------------------------------------------------
     @objc private func buttonPressed(){
