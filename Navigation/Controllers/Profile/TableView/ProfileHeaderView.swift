@@ -1,4 +1,5 @@
 
+
 import UIKit
 
 
@@ -106,45 +107,41 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
       addSubview(profileName)
       
       NSLayoutConstraint.activate([
-            profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileName.topAnchor.constraint(equalTo: topAnchor,constant: 27),
-          
-          
-            profileName.topAnchor.constraint(equalTo: self.topAnchor,constant: 27),
-            profileName.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-      
-      
-            profileAvatar.heightAnchor.constraint(equalToConstant: 100),
-            profileAvatar.widthAnchor.constraint(equalToConstant: 100),
-            profileAvatar.topAnchor.constraint(equalTo: self.topAnchor,constant: 16),
-            profileAvatar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52),
-            
-      
-            profileStatus.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 16),
-      
-
-            profileButton.heightAnchor.constraint(equalToConstant: 50),
-            profileButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 70),
-            profileButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-
-    
-            buttonText.centerXAnchor.constraint(equalTo: profileButton.centerXAnchor),
-            buttonText.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor),
         
-
-            statusField.heightAnchor.constraint(equalToConstant: 40),
-            statusField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            statusField.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 130),
-            statusField.topAnchor.constraint(equalTo: self.topAnchor, constant: 110)
-        ])
+        profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
+        profileName.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+        
+        profileAvatar.heightAnchor.constraint(equalToConstant: 100),
+        profileAvatar.widthAnchor.constraint(equalToConstant: 100),
+        profileAvatar.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+        profileAvatar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+        profileAvatar.bottomAnchor.constraint(equalTo: profileButton.topAnchor, constant: -52),
+        
+        profileStatus.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 16),
+        
+        profileButton.heightAnchor.constraint(equalToConstant: 50),
+        profileButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        profileButton.topAnchor.constraint(equalTo: profileStatus.bottomAnchor, constant: 70),
+        profileButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+        profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+        
+        buttonText.centerXAnchor.constraint(equalTo: profileButton.centerXAnchor),
+        buttonText.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor),
+        
+        statusField.heightAnchor.constraint(equalToConstant: 40),
+        statusField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+        statusField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        statusField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 130),
+        statusField.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+                                  
+                
+      
+      ])
+      
+      
+         
+      
     }
-
-    
-
 //--------------------------------------------------------------------------------------
     @objc private func buttonPressed(){
         profileStatus.text = statusText

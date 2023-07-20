@@ -1,10 +1,11 @@
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
-    var posts = Posts.makePost()
-   
+    
+    
     
     
     private let tablePost: UITableView = {
@@ -19,7 +20,12 @@ class ProfileViewController: UIViewController {
     
      override func viewDidLoad(){
          super.viewDidLoad()
+         
+         #if DEBUG
          view.backgroundColor = .white
+         #else
+         view.backgroundColor = .systemGray3
+         #endif
          title = "Posts"
          tabBarController?.tabBar.isHidden = true
          self.navigationController?.navigationBar.prefersLargeTitles = true

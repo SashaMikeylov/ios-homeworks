@@ -5,10 +5,14 @@
 //  Created by Денис Кузьминов on 18.06.2023.
 //
 
+import StorageService
 import Foundation
 import UIKit
 
+
 class PostTableViewCell: UITableViewCell {
+    
+    
     
     static let id = "PostTableViewCell"
     
@@ -16,7 +20,7 @@ class PostTableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-
+        
         return view
     }()
     
@@ -34,8 +38,10 @@ class PostTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         
+        
         return image
     }()
+    
     
     
     let descriptionPost: UILabel = {
@@ -44,6 +50,7 @@ class PostTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemGray
         label.numberOfLines = 0
+        
         
         return label
     }()
@@ -66,8 +73,8 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-//--------------------------------------------Func---------------------------------------------------------
-   
+    //--------------------------------------------Func---------------------------------------------------------
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -90,6 +97,7 @@ class PostTableViewCell: UITableViewCell {
     
     private func addSub(){
         
+        
         contentView.addSubview(postUIView)
         postUIView.addSubview(titlePost)
         postUIView.addSubview(descriptionPost)
@@ -98,7 +106,7 @@ class PostTableViewCell: UITableViewCell {
         postUIView.addSubview(viewsView)
     }
     
-//--------------------------------------------setUp--------------------------------------------------------
+    //--------------------------------------------setUp--------------------------------------------------------
     
     private func setUp(){
         NSLayoutConstraint.activate([
@@ -123,26 +131,24 @@ class PostTableViewCell: UITableViewCell {
             descriptionPost.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 16),
             descriptionPost.leftAnchor.constraint(equalTo: postUIView.leftAnchor, constant: 16),
             descriptionPost.rightAnchor.constraint(equalTo: postUIView.rightAnchor, constant: -16),
-
+            
             likesView.bottomAnchor.constraint(equalTo: postUIView.bottomAnchor, constant: -10),
             likesView.leftAnchor.constraint(equalTo: postUIView.leftAnchor, constant: 16),
             
-
+            
             viewsView.rightAnchor.constraint(equalTo: postUIView.rightAnchor, constant: -16),
             viewsView.bottomAnchor.constraint(equalTo: postUIView.bottomAnchor, constant: -10)
         ])
     }
-//---------------------------------------------------------------------------------------------------------
-
-        
+    //---------------------------------------------------------------------------------------------------------
+    
+    
     func configure(post: Post) {
         titlePost.text = post.author
-        postView.image = post.image
         descriptionPost.text = post.description
         likesView.text = "Likes: \(post.likes)"
         viewsView.text = "Views: \(post.views)"
-    }
-
         
+    }
+    
 }
-
