@@ -8,11 +8,11 @@
 import StorageService
 import Foundation
 import UIKit
-
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
-    
+    private let imageProcessor = ImageProcessor()
     
     static let id = "PostTableViewCell"
     
@@ -149,6 +149,11 @@ class PostTableViewCell: UITableViewCell {
         likesView.text = "Likes: \(post.likes)"
         viewsView.text = "Views: \(post.views)"
         
+        if let image = UIImage(named: post.image){
+            imageProcessor.processImage(sourceImage: image, filter: .chrome, completion: {image in
+                postView.image = image
+            })
+        }
     }
     
 }
