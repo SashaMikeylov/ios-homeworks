@@ -108,8 +108,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
       
       NSLayoutConstraint.activate([
         
-        profileName.centerXAnchor.constraint(equalTo: centerXAnchor),
-        profileName.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+        self.heightAnchor.constraint(equalToConstant: 240),
+        
+        
+        profileName.leftAnchor.constraint(equalTo: profileAvatar.rightAnchor, constant: 15),
+        profileName.topAnchor.constraint(equalTo: topAnchor, constant: 35),
         
         profileAvatar.heightAnchor.constraint(equalToConstant: 100),
         profileAvatar.widthAnchor.constraint(equalToConstant: 100),
@@ -137,11 +140,14 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 
       
       ])
-      
-      
-         
-      
     }
+    
+     func userConfig(user: UserBody){
+        profileName.text = user.fullName
+        profileStatus.text = user.status
+         profileAvatar.layer.contents = user.avatar.cgImage
+    }
+    
 //--------------------------------------------------------------------------------------
     @objc private func buttonPressed(){
         profileStatus.text = statusText

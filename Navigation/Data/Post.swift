@@ -5,7 +5,7 @@
 
 
 import UIKit
-import iOSIntPackage
+
 
 public struct Post {
     public let author: String

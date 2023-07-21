@@ -38,8 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: $0)
         }
         
-        
-       
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         
