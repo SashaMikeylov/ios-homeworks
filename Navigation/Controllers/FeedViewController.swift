@@ -10,7 +10,7 @@ class FeedViewController: UIViewController{
     
     private lazy var postButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemPink
+        button.backgroundColor = .systemGray5
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         return button
@@ -18,7 +18,7 @@ class FeedViewController: UIViewController{
     
     private lazy var postButton1: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemPink
+        button.backgroundColor = .systemGray5
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         return button
@@ -34,6 +34,7 @@ class FeedViewController: UIViewController{
         stack.alignment = .fill
         stack.distribution = .fillEqually
         
+        
         stack.addArrangedSubview(postButton)
         stack.addArrangedSubview(postButton1)
         
@@ -45,7 +46,7 @@ class FeedViewController: UIViewController{
         super.viewDidLoad()
         
         title = "Posts"
-        view.backgroundColor = .systemIndigo
+        view.backgroundColor = .white
         view.addSubview(postStack)
         setUp()
         

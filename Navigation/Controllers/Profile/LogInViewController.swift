@@ -42,7 +42,7 @@ class LogInViewController: UIViewController {
     private lazy var emailFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " Email or phone"
+        feed.placeholder = " User login"
         feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
@@ -59,7 +59,7 @@ class LogInViewController: UIViewController {
     private lazy var passworFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " Password"
+        feed.placeholder = " User password"
         feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
@@ -114,7 +114,7 @@ class LogInViewController: UIViewController {
     private lazy var errorMessage: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Wrong password, try again !"
+        label.text = "Wrong login, try again !"
         label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         
@@ -238,12 +238,15 @@ class LogInViewController: UIViewController {
     }
     
     @objc func actionButton(){
+        
         #if DEBUG
+        
         let check = checker(user: userDebug)
         #else
         let check = checker(user: userRealese)
         #endif
         scrollView.addSubview(errorMessage)
+        
         if check == true {
             let profileViewController = ProfileViewController()
             navigationController?.pushViewController(profileViewController, animated: true)
@@ -255,7 +258,6 @@ class LogInViewController: UIViewController {
             errorMessage.isHidden = false
         }
     }
-    
 }
     
 extension LogInViewController: UITextFieldDelegate{

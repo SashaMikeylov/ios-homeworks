@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let logInViewController = LogInViewController()
         let feedViewController = FeedViewController()
         feedViewController.title = "News"
-        feedViewController.view.backgroundColor = .systemYellow
+        
         
         
         tabBarController.tabBar.backgroundColor = .systemGray5

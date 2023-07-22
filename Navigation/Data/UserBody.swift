@@ -17,3 +17,6 @@ struct UserBody {
     var status: String
     
 }
+
+
+

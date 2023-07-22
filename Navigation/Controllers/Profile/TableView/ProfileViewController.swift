@@ -5,6 +5,7 @@ import StorageService
 class ProfileViewController: UIViewController {
     
     
+    
     private let tablePost: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +18,7 @@ class ProfileViewController: UIViewController {
          super.viewDidLoad()
          
          #if DEBUG
-         view.backgroundColor = .white
+         view.backgroundColor = .systemGray3
          #else
          view.backgroundColor = .systemGray3
          #endif

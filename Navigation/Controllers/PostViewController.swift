@@ -8,10 +8,7 @@ class PostViewController: UIViewController{
     
     
     override func viewDidLoad() {
-        
-        
-        
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
     
     let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(closeTVC))
     navigationItem.rightBarButtonItem = button

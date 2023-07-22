@@ -175,7 +175,7 @@ class PhotosTableViewCell: UITableViewCell{
             case 4:
                 fourthPhoto.layer.contents = UIImage(named: $0.photoName)?.cgImage
             default:
-                print("It's not prewie photos =(")
+                print()
             }
 
         }

@@ -2,7 +2,7 @@
 //  User.swift
 //  Navigation
 //
-//  Created by Денис Кузьминов on 20.07.2023.
+//  Created by  on 20.07.2023.
 //
 
 import Foundation
@@ -19,7 +19,8 @@ class CurrentUserService: UserService {
     
     var user: UserBody
     
-    init(user: UserBody){
+    
+    init(user: UserBody) {
         self.user = user
     }
     
@@ -37,11 +38,10 @@ class CurrentUserService: UserService {
 class TestUserService: UserService {
     
     var user: UserBody
-    
-    init(user: UserBody){
+
+    init(user: UserBody) {
         self.user = user
     }
-    
     
     func searchUser(login: UserBody) -> UserBody? {
         if login.login == user.login {
@@ -50,3 +50,7 @@ class TestUserService: UserService {
         return nil
     }
 }
+    
+    
+    
+
