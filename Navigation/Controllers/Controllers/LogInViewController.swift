@@ -15,10 +15,10 @@ class LogInViewController: UIViewController {
         let logo = UIView()
         logo.layer.contents = UIImage(named: "logIn")?.cgImage
         logo.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return logo
     }()
-
+    
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.backgroundColor = .white
@@ -42,7 +42,7 @@ class LogInViewController: UIViewController {
     private lazy var emailFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " Email or phone"
+        feed.placeholder = " User login"
         feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
@@ -52,14 +52,14 @@ class LogInViewController: UIViewController {
         feed.clearButtonMode = UITextField.ViewMode.whileEditing
         feed.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         feed.delegate = self
-
+        
         return feed
     }()
-
+    
     private lazy var passworFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " Password"
+        feed.placeholder = " User password"
         feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
@@ -70,11 +70,11 @@ class LogInViewController: UIViewController {
         feed.clearButtonMode = UITextField.ViewMode.whileEditing
         feed.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         feed.delegate = self
-
-
+        
+        
         return feed
     }()
-
+    
     private lazy var logButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -84,8 +84,8 @@ class LogInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(UIImage(named: "logButton"), for: .normal)
         button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
-
-
+        
+        
         return button
     }()
     
@@ -96,7 +96,7 @@ class LogInViewController: UIViewController {
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .white
-
+        
         
         
         return view
@@ -110,7 +110,18 @@ class LogInViewController: UIViewController {
         return view
         
     }()
-//-------------------------------------------func----------------------------------------------------------
+    
+    private lazy var errorMessage: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Wrong login, try again !"
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        
+        return label
+    }()
+    
+    //-------------------------------------------func----------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,12 +152,12 @@ class LogInViewController: UIViewController {
         contenView.addSubview(logButton)
         scrollView.addSubview(contenView)
         
-
+        
     }
-//---------------------------------------------setUp-------------------------------------------------------
+    //MARK: -SetUp
     
     private func setUp(){
-
+        
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             
@@ -171,7 +182,7 @@ class LogInViewController: UIViewController {
             stackView.rightAnchor.constraint(equalTo: contenView.rightAnchor, constant: -16),
             stackView.leftAnchor.constraint(equalTo: contenView.leftAnchor, constant: 16),
             stackView.heightAnchor.constraint(equalToConstant: 100),
-
+            
             emailFeed.topAnchor.constraint(equalTo: stackView.topAnchor),
             emailFeed.rightAnchor.constraint(equalTo: stackView.rightAnchor),
             emailFeed.leftAnchor.constraint(equalTo: stackView.leftAnchor),
@@ -191,13 +202,13 @@ class LogInViewController: UIViewController {
             logButton.heightAnchor.constraint(equalToConstant: 50),
             logButton.leftAnchor.constraint(equalTo: contenView.leftAnchor, constant: 16),
             logButton.rightAnchor.constraint(equalTo: contenView.rightAnchor, constant: -16),
-
-
-
+            
+            
+            
         ])
     }
-//---------------------------------------------------------------------------------------------------------
-   
+    //MARK: -func
+    
     private func setupKeyboardObservers(){
         
         let noficiationCenter = NotificationCenter.default
@@ -208,6 +219,15 @@ class LogInViewController: UIViewController {
     }
     
     
+    private func checker(user: UserBody) -> Bool {
+        if emailFeed.text == user.login {
+            return true
+        }
+        return false
+    }
+    
+    
+    //MARK: -objc func
     @objc func willShowKeyboard(_ notification: NSNotification){
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         scrollView.contentInset.bottom += keyboardHeight ?? 0.0
@@ -218,16 +238,34 @@ class LogInViewController: UIViewController {
     }
     
     @objc func actionButton(){
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
+        
+        #if DEBUG
+        
+        let check = checker(user: userDebug)
+        #else
+        let check = checker(user: userRealese)
+        #endif
+        scrollView.addSubview(errorMessage)
+        
+        if check == true {
+            let profileViewController = ProfileViewController()
+            navigationController?.pushViewController(profileViewController, animated: true)
+            errorMessage.isHidden = true
+        }else {
+            scrollView.addSubview(errorMessage)
+            errorMessage.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -30).isActive = true
+            errorMessage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+            errorMessage.isHidden = false
+        }
     }
-    
 }
-
+    
 extension LogInViewController: UITextFieldDelegate{
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
 }
+

@@ -12,8 +12,6 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    
-    
     static let id = "PostTableViewCell"
     
     let postUIView: UIView = {
@@ -148,7 +146,7 @@ class PostTableViewCell: UITableViewCell {
         descriptionPost.text = post.description
         likesView.text = "Likes: \(post.likes)"
         viewsView.text = "Views: \(post.views)"
-        
+        postView.image = UIImage(named: post.image)
     }
     
 }

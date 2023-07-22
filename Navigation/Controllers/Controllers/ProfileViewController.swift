@@ -6,8 +6,6 @@ class ProfileViewController: UIViewController {
     
     
     
-    
-    
     private let tablePost: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -16,13 +14,11 @@ class ProfileViewController: UIViewController {
     }()
 
     
-    
-    
      override func viewDidLoad(){
          super.viewDidLoad()
          
          #if DEBUG
-         view.backgroundColor = .white
+         view.backgroundColor = .systemGray3
          #else
          view.backgroundColor = .systemGray3
          #endif
@@ -64,63 +60,67 @@ class ProfileViewController: UIViewController {
         tablePost.delegate = self
     }
     
+    
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        posts.count + 1
+        if section == 0 {
+            return 1
+        }
         
+        if section == 1 {
+         return  posts.count
+        }
         
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-                if indexPath.row == posts.count{
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id, for: indexPath) as? PhotosTableViewCell else {fatalError()}
-        
-                    return cell
-                }
-        
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-                let postik = posts[indexPath.row]
-                cell.configure(post: postik)
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id, for: indexPath) as? PhotosTableViewCell else {fatalError()}
+            return cell
+        }
         
         
-                return cell
         
-            }
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+            let postik = posts[indexPath.row]
+            cell.configure(post: postik)
+            return cell
+        }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultId", for: indexPath)
+        return cell
         
-       
+    }
 }
 
 extension ProfileViewController: UITableViewDelegate {
         
-        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            250
-        }
-        
-        
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.id) as? ProfileHeaderView else { fatalError() }
-
-           return header
-//                    if section == 0{
-//                        return ProfileHeaderView()
-//                    } else {
-//                        return nil
-//                    }
+            
+            if section == 0 {
+                guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.id) as? ProfileHeaderView else { fatalError() }
+                header.userConfig(user: User().user!)
+                return header
+            }
+            return nil
         }
         
             
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
-            if indexPath.row == posts.count {
+            if indexPath.section == 0 {
                 let photosViewController = PhotosViewController ()
                 navigationController?.pushViewController(photosViewController, animated: true)
             }
