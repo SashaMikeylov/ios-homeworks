@@ -29,11 +29,8 @@ class CurrentUserService: UserService {
             return user
         }
         return nil
-        
-        
     }
 }
-
 
 class TestUserService: UserService {
     

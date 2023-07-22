@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				249CDDA02A40A1C8002C4EA5 /* TableView */,
-				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -176,9 +175,8 @@
 		249CDDA02A40A1C8002C4EA5 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				24B9FEB42A44F4A200E546AD /* PPhotoCopllection */,
+				24B9FEB42A44F4A200E546AD /* PhotoCopllection */,
 				24A28A282A69E87800C5E395 /* Cells */,
-				247E51682A2743F000E3C6AB /* ProfileViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -193,6 +191,38 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		24A28A2D2A6C7C4100C5E395 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				247E51632A226AE200E3C6AB /* Post.swift */,
+				24B9FEA92A4337AC00E546AD /* Photos.swift */,
+				24A28A292A6A7D0C00C5E395 /* UserBody.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		24A28A2E2A6C7C5500C5E395 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				24A28A2B2A6A7F0600C5E395 /* Users.swift */,
+				249E03602A69B08D0055CADE /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		24A28A2F2A6C7C8B00C5E395 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
+				247E51682A2743F000E3C6AB /* ProfileViewController.swift */,
+				247E51292A094CD000E3C6AB /* ViewController.swift */,
+				247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */,
+				247E51612A1D378900E3C6AB /* PostViewController.swift */,
+				247E513D2A0D314C00E3C6AB /* InfoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		24B9FEAD2A44548D00E546AD /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,23 +232,20 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		24B9FEB42A44F4A200E546AD /* PPhotoCopllection */ = {
+		24B9FEB42A44F4A200E546AD /* PhotoCopllection */ = {
 			isa = PBXGroup;
 			children = (
 				24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */,
 				24B9FEB22A44ECA400E546AD /* PhotoCell.swift */,
 			);
-			path = PPhotoCopllection;
+			path = PhotoCopllection;
 			sourceTree = "<group>";
 		};
 		24C1E3232A5C2C1F0043B15E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24A28A2F2A6C7C8B00C5E395 /* Controllers */,
 				247E51652A27439200E3C6AB /* Profile */,
-				247E51292A094CD000E3C6AB /* ViewController.swift */,
-				247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */,
-				247E51612A1D378900E3C6AB /* PostViewController.swift */,
-				247E513D2A0D314C00E3C6AB /* InfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -243,11 +270,8 @@
 		24C1E3492A5C2D560043B15E /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				247E51632A226AE200E3C6AB /* Post.swift */,
-				24B9FEA92A4337AC00E546AD /* Photos.swift */,
-				24A28A292A6A7D0C00C5E395 /* UserBody.swift */,
-				24A28A2B2A6A7F0600C5E395 /* Users.swift */,
-				249E03602A69B08D0055CADE /* UserService.swift */,
+				24A28A2D2A6C7C4100C5E395 /* Modules */,
+				24A28A2E2A6C7C5500C5E395 /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";

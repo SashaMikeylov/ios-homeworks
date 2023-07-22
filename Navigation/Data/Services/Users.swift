@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-
-
-
+//MARK: -users
 let userDebug = UserBody(login: "Swap",
                          fullName: "Alexander",
                          avatar: UIImage(named: "Avatar-1")!,
@@ -22,12 +20,12 @@ let userRealese = UserBody(login: "SwaPPer",
                          status: "Checking...")
 
 
-
-
 class User {
+    
     #if DEBUG
     let user = CurrentUserService(user: userDebug).searchUser(login: userDebug)
     #else
     let user = CurrentUserService(user: userRealese).searchUser(login: userRealese)
     #endif
+    
 }
