@@ -230,7 +230,8 @@ class LogInViewController: UIViewController {
     }
     
     private func checker() -> Bool {
-        Checker.shared.check(login: emailFeed.text ?? ""  , password: passworFeed.text ?? "")
+       // Checker.shared.check(login: emailFeed.text ?? ""  , password: passworFeed.text ?? "")
+        LoginInspector().check(login: emailFeed.text ?? "", password: passworFeed.text ?? "")
     }
     
     private func allert(){
