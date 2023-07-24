@@ -155,7 +155,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
    private var statusText: String = ""
     
-    @objc private func statusTextChanged(textField: UITextField){
+    @objc private func statusTextChanged(textField: UITextField) {
     let text = textField.text
         statusText = text!
    }

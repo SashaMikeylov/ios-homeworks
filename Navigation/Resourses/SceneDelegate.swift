@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         
         let logInViewController = LogInViewController()
+        logInViewController.loginDelegate = MyLoginFactory().makeLoginInspector()
         let feedViewController = FeedViewController()
         feedViewController.title = "News"
         
