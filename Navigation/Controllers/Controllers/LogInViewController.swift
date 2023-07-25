@@ -8,8 +8,24 @@
 import Foundation
 import UIKit
 
+
+protocol LoginViewControllerDelegate {
+    func check(login: String, password: String) -> Bool
+}
+
+struct LoginInspector: LoginViewControllerDelegate {
+    
+    func check(login: String, password: String) -> Bool {
+        return Checker.shared.check(login: login, password: password)
+    }
+}
+
+//MARK: - main Class
+
 class LogInViewController: UIViewController {
     
+    
+    var loginDelegate: LoginViewControllerDelegate?
     
     private lazy var vkLogo: UIView = {
         let logo = UIView()
@@ -111,17 +127,10 @@ class LogInViewController: UIViewController {
         
     }()
     
-    private lazy var errorMessage: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Wrong login, try again !"
-        label.textColor = .red
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        
-        return label
-    }()
     
-    //-------------------------------------------func----------------------------------------------------------
+    
+    
+    //MARK: -Life
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +147,8 @@ class LogInViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         setupKeyboardObservers()
     }
+    
+// MARK: -Func
     
     private func addSub(){
         
@@ -218,46 +229,42 @@ class LogInViewController: UIViewController {
         noficiationCenter.addObserver(self, selector: #selector(willHIdeKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    
-    private func checker(user: UserBody) -> Bool {
-        if emailFeed.text == user.login {
-            return true
-        }
-        return false
+    private func checker() -> Bool {
+       // Checker.shared.check(login: emailFeed.text ?? ""  , password: passworFeed.text ?? "")
+        LoginInspector().check(login: emailFeed.text ?? "", password: passworFeed.text ?? "")
     }
     
+    private func allert(){
+        let allert = UIAlertController(title: "Wrong login or password ", message: "Try again !", preferredStyle: .alert)
+        let allerAction = UIAlertAction(title: "Try again", style: .cancel)
+        allert.addAction(allerAction)
+        present(allert, animated: true)
+    }
     
     //MARK: -objc func
+    
+    
     @objc func willShowKeyboard(_ notification: NSNotification){
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         scrollView.contentInset.bottom += keyboardHeight ?? 0.0
     }
     
+    
     @objc func willHIdeKeyboard(_ notification: NSNotification){
         scrollView.contentInset.bottom = 0.0
     }
     
+    
     @objc func actionButton(){
         
-        #if DEBUG
-        
-        let check = checker(user: userDebug)
-        #else
-        let check = checker(user: userRealese)
-        #endif
-        scrollView.addSubview(errorMessage)
-        
-        if check == true {
+        if checker() == true {
             let profileViewController = ProfileViewController()
             navigationController?.pushViewController(profileViewController, animated: true)
-            errorMessage.isHidden = true
         }else {
-            scrollView.addSubview(errorMessage)
-            errorMessage.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -30).isActive = true
-            errorMessage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-            errorMessage.isHidden = false
+            allert()
         }
     }
+    
 }
     
 extension LogInViewController: UITextFieldDelegate{
