@@ -11,13 +11,12 @@ class Checker {
     
     static let shared = Checker()
     
-    private let userLogin: String
-    private let userPassword: String
+    private let userLogin = "login"
+    private let userPassword = "password"
     
-    private init() {
-        userLogin = User().user?.login ?? ""
-        userPassword = "Waplolpop"
-    }
+    private init() {}
+        
+    
     
     func check(login: String, password: String) -> Bool {
         if (userLogin == login) && (userPassword == password) {
