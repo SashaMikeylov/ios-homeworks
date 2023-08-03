@@ -23,7 +23,7 @@ let userRealese = UserBody(login: "SwaPPer",
 class User {
     
     #if DEBUG
-    let user = CurrentUserService(user: userDebug).searchUser(login: userDebug)
+    let user = TestUserService(user: userDebug).searchUser(login: userDebug)
     #else
     let user = CurrentUserService(user: userRealese).searchUser(login: userRealese)
     #endif

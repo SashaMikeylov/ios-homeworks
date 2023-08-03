@@ -151,6 +151,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 //--------------------------------------------------------------------------------------
     @objc private func buttonPressed(){
         profileStatus.text = statusText
+        
     }
     
    private var statusText: String = ""

@@ -22,10 +22,10 @@ struct LoginInspector: LoginViewControllerDelegate {
 
 //MARK: - main Class
 
-class LogInViewController: UIViewController {
+final class LogInViewController: UIViewController {
     
     
-    var loginDelegate: LoginViewControllerDelegate?
+     var loginDelegate: LoginViewControllerDelegate?
     
     private lazy var vkLogo: UIView = {
         let logo = UIView()

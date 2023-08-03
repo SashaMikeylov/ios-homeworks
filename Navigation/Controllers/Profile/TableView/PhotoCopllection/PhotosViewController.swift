@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import iOSIntPackage
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, ImageLibrarySubscriber {
+   
+    let imagePublisherFacase = ImagePublisherFacade()
     
     let photos = Photos.make()
     
@@ -31,6 +34,7 @@ class PhotosViewController: UIViewController {
         tuneCollection()
         tuneView()
         setUp()
+        facadeObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +50,7 @@ class PhotosViewController: UIViewController {
     private func tuneCollection(){
         photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.id)
         photoCollection.dataSource = self
+        photoCollection.delegate = self
     }
     
     private func setUp(){
@@ -61,9 +66,15 @@ class PhotosViewController: UIViewController {
             
         ])
     }
+    
+    private func facadeObserver(){
+        imagePublisherFacase.subscribe(self)
+        imagePublisherFacase.addImagesWithTimer(time: 0.5, repeat: 10)
+    }
+    
 }
 
-extension PhotosViewController: UICollectionViewDataSource {
+extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photos.count
@@ -77,6 +88,14 @@ extension PhotosViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
 }
 
-
+extension PhotosViewController {
+    
+    func receive(images: [UIImage]) {
+        let photos = Photos.make()
+        photoCollection.reloadData()
+    }
+    
+}
