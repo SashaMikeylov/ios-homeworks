@@ -24,7 +24,16 @@ class FeedViewController: UIViewController {
         return field
     }()
     
-    private lazy var checkGuessButton = CustomButton(title: "Check", bgColor: .systemBlue)
+    private lazy var checkGuessButton = CustomButton(title: "Check", bgColor: .systemBlue, action: { [ weak self ] in
+        let feed = FeedModel()
+        let userWord = self?.wordField.text ?? ""
+        if feed.check(word: userWord) == true {
+            self?.wordLabel.backgroundColor = .green
+        } else {
+            self?.wordLabel.backgroundColor = .red
+        }
+    }
+    )
     
     private lazy var wordLabel: UILabel = {
         let label = UILabel()
@@ -47,15 +56,17 @@ class FeedViewController: UIViewController {
         title = "Posts"
         view.backgroundColor = .white
         layout()
-        checkGuessButton.callBack = { [ weak self ] in
-            let feed = FeedModel()
-            var userWord = self?.wordField.text ?? ""
-            if feed.check(word: userWord) == true {
-                self?.wordLabel.backgroundColor = .green
-            } else {
-                self?.wordLabel.backgroundColor = .red
-            }
-        }
+        
+        
+//        checkGuessButton.callBack = { [ weak self ] in
+//            let feed = FeedModel()
+//            let userWord = self?.wordField.text ?? ""
+//            if feed.check(word: userWord) == true {
+//                self?.wordLabel.backgroundColor = .green
+//            } else {
+//                self?.wordLabel.backgroundColor = .red
+//            }
+//        }
     }
     
     //MARK: - Layput
@@ -98,15 +109,8 @@ class FeedViewController: UIViewController {
     //MARK: - Func
     
     
-    @objc private func checkAction(){
-        let feed = FeedModel()
-        var userWord = wordField.text ?? ""
-        if feed.check(word: userWord) == true {
-            wordLabel.backgroundColor = .green
-        } else {
-            wordLabel.backgroundColor = .red
-        }
-    }
+   
+    
     
 }
 

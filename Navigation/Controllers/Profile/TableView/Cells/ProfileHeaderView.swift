@@ -40,7 +40,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var profileButton = CustomButton(title: "Show status", bgColor: .systemBlue)
+    private lazy var profileButton = CustomButton(title: "Show status", bgColor: .systemBlue, action: {  [ weak self ] in
+        self?.profileStatus.text = self?.statusText
+    })
     
     
     
@@ -70,9 +72,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .lightGray
         
-        profileButton.callBack = { [ weak self ] in
-            self?.profileStatus.text = self?.statusText
-        }
         
         setUp()
     }

@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 
-class CustomButton: UIButton {
+final class CustomButton: UIButton {
     
-    var callBack: (() -> Void)?
+    typealias Action = () -> Void
     
-    init(title: String, titleColor: UIColor = .white, bgColor: UIColor) {
-        
+    var buttonAction: Action
+    
+    init(title: String, titleColor: UIColor = .white, bgColor: UIColor, action: @escaping Action) {
+        buttonAction = action
         
         super.init(frame: .zero)
         makeSystem()
@@ -37,7 +39,7 @@ class CustomButton: UIButton {
     }
     
     @objc private func buttonTapped(){
-        callBack?()
+        buttonAction()
     }
 }
 

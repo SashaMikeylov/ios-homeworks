@@ -92,7 +92,15 @@ class LogInViewController: UIViewController {
     }()
     
     
-    private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue)
+    private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue, action: {
+        [ weak self ] in
+        if self?.checker() == true {
+            let profileViewController = ProfileViewController()
+            self?.navigationController?.pushViewController(profileViewController, animated: true)
+        } else {
+            self?.allert()
+        }
+    })
     
     
     private lazy var scrollView: UIScrollView = {
@@ -126,15 +134,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        logButton.callBack = { [ weak self ] in
-            
-            if self?.checker() == true {
-                let profileViewController = ProfileViewController()
-                self?.navigationController?.pushViewController(profileViewController, animated: true)
-            }else {
-                self?.allert()
-            }
-        }
+       
         
         addSub()
         setUp()
