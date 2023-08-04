@@ -91,19 +91,17 @@ class LogInViewController: UIViewController {
         return feed
     }()
     
-    private lazy var logButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .systemBlue
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setBackgroundImage(UIImage(named: "logButton"), for: .normal)
-        button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
-        
-        
-        return button
-    }()
+    
+    private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue, action: {
+        [ weak self ] in
+        if self?.checker() == true {
+            let profileViewController = ProfileViewController()
+            self?.navigationController?.pushViewController(profileViewController, animated: true)
+        } else {
+            self?.allert()
+        }
+    })
+    
     
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -136,6 +134,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+       
         
         addSub()
         setUp()
@@ -168,6 +167,8 @@ class LogInViewController: UIViewController {
     //MARK: -SetUp
     
     private func setUp(){
+        
+        logButton.translatesAutoresizingMaskIntoConstraints = false
         
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -230,7 +231,7 @@ class LogInViewController: UIViewController {
     }
     
     private func checker() -> Bool {
-       // Checker.shared.check(login: emailFeed.text ?? ""  , password: passworFeed.text ?? "")
+       
         LoginInspector().check(login: emailFeed.text ?? "", password: passworFeed.text ?? "")
     }
     
@@ -253,18 +254,6 @@ class LogInViewController: UIViewController {
     @objc func willHIdeKeyboard(_ notification: NSNotification){
         scrollView.contentInset.bottom = 0.0
     }
-    
-    
-    @objc func actionButton(){
-        
-        if checker() == true {
-            let profileViewController = ProfileViewController()
-            navigationController?.pushViewController(profileViewController, animated: true)
-        }else {
-            allert()
-        }
-    }
-    
 }
     
 extension LogInViewController: UITextFieldDelegate{
