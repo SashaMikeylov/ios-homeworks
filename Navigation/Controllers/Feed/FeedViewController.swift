@@ -6,6 +6,8 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
+    private let viewModel: FeedViewModel
+    
     private let textView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -24,16 +26,22 @@ class FeedViewController: UIViewController {
         return field
     }()
     
-    private lazy var checkGuessButton = CustomButton(title: "Check", bgColor: .systemBlue, action: { [ weak self ] in
-        let feed = FeedModel()
-        let userWord = self?.wordField.text ?? ""
-        if feed.check(word: userWord) == true {
-            self?.wordLabel.backgroundColor = .green
-        } else {
-            self?.wordLabel.backgroundColor = .red
-        }
-    }
-    )
+    private lazy var checkGuessButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Check", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.addTarget(self, action: #selector(binding), for: .touchUpInside)
+        button.makeSystem()
+        
+        return button
+    }()
+       
+    
     
     private lazy var wordLabel: UILabel = {
         let label = UILabel()
@@ -50,6 +58,15 @@ class FeedViewController: UIViewController {
     
     //MARK: - Life
     
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,20 +74,24 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         layout()
         
-        
-//        checkGuessButton.callBack = { [ weak self ] in
-//            let feed = FeedModel()
-//            let userWord = self?.wordField.text ?? ""
-//            if feed.check(word: userWord) == true {
-//                self?.wordLabel.backgroundColor = .green
-//            } else {
-//                self?.wordLabel.backgroundColor = .red
-//            }
-//        }
+    
     }
     
     //MARK: - Layput
     
+    
+    @objc private func binding(){
+        
+//        viewModel.callBack = { [ weak self ] in
+        let userWord = wordField.text ?? ""
+            
+            if viewModel.check(word: userWord) == true {
+            wordLabel.backgroundColor = .green
+        } else {
+            wordLabel.backgroundColor = .red
+            }
+        }
+    //}
     
     private func layout() {
         
