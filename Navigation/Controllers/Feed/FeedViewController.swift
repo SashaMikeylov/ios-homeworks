@@ -35,7 +35,7 @@ class FeedViewController: UIViewController {
         button.layer.shadowRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(binding), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.makeSystem()
         
         return button
@@ -73,30 +73,44 @@ class FeedViewController: UIViewController {
         title = "Posts"
         view.backgroundColor = .white
         layout()
-        
+       
     
     }
     
     //MARK: - Layput
     
     
-    @objc private func binding(){
+    
+    private func binding(){
         
-//        viewModel.callBack = { [ weak self ] in
         let userWord = wordField.text ?? ""
-            
-            if viewModel.check(word: userWord) == true {
-            wordLabel.backgroundColor = .green
-        } else {
-            wordLabel.backgroundColor = .red
+        
+        viewModel.checkWord = { [ weak self ] state in
+            if state == .initial {
+               print("Initial")
+            } else {
+                if FeedModel().check(word: userWord) == true {
+                    self?.wordLabel.backgroundColor = .green
+                } else {
+                    self?.wordLabel.backgroundColor = .red
+                }
             }
+            
         }
-    //}
+        
+    }
+    
+    @objc private func buttonTapped() {
+      
+        viewModel.checkAcion(action: .buttonTapped)
+        binding()
+        
+    }
     
     private func layout() {
         
         checkGuessButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         textView.addSubview(wordField)
         view.addSubview(checkGuessButton)
         view.addSubview(textView)
