@@ -6,7 +6,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private let viewModel: FeedViewModel
+   // private let viewModel: FeedViewModel
     
     private let textView: UIView = {
         let view = UIView()
@@ -58,14 +58,9 @@ class FeedViewController: UIViewController {
     
     //MARK: - Life
     
-    init(viewModel: FeedViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
+   
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

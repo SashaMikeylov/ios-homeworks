@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				24B9FEAD2A44548D00E546AD /* Resourses */,
-				24C1E3232A5C2C1F0043B15E /* Controllers */,
+				24A28A2F2A6C7C8B00C5E395 /* Controllers */,
 				24C1E3492A5C2D560043B15E /* Data */,
 				24A604742A7BAD8900737A5B /* Custom */,
 				24C1E32A2A5C2CE90043B15E /* StorageService */,
@@ -226,13 +226,16 @@
 		24A28A2F2A6C7C8B00C5E395 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				247E51652A27439200E3C6AB /* Profile */,
+				24A604772A7C591100737A5B /* Feed */,
 				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
 				247E51682A2743F000E3C6AB /* ProfileViewController.swift */,
 				247E51292A094CD000E3C6AB /* ViewController.swift */,
 				247E51612A1D378900E3C6AB /* PostViewController.swift */,
 				247E513D2A0D314C00E3C6AB /* InfoViewController.swift */,
 			);
-			path = Controllers;
+			name = Controllers;
+			path = Controllers/Controllers;
 			sourceTree = "<group>";
 		};
 		24A604742A7BAD8900737A5B /* Custom */ = {
@@ -269,16 +272,6 @@
 				24B9FEB22A44ECA400E546AD /* PhotoCell.swift */,
 			);
 			path = PhotoCollection;
-			sourceTree = "<group>";
-		};
-		24C1E3232A5C2C1F0043B15E /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				24A604772A7C591100737A5B /* Feed */,
-				24A28A2F2A6C7C8B00C5E395 /* Controllers */,
-				247E51652A27439200E3C6AB /* Profile */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		24C1E32A2A5C2CE90043B15E /* StorageService */ = {
