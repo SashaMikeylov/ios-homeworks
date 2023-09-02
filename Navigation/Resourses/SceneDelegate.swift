@@ -17,29 +17,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: scene)
-        let tabBarController = UITabBarController()
+       // let tabBarController = UITabBarController()
     
         
-        let logInViewController = LogInViewController()
-        logInViewController.loginDelegate = MyLoginFactory().makeLoginInspector()
-        let feedViewController = FeedViewController()
-        feedViewController.title = "News"
+//        let logInViewController = LogInViewController()
+//        logInViewController.loginDelegate = MyLoginFactory().makeLoginInspector()
+//        let feedViewController = FeedViewController()
+//        feedViewController.title = "News"
         
         
         
-        tabBarController.tabBar.backgroundColor = .systemGray5
+      //  tabBarController.tabBar.backgroundColor = .systemGray5
         
-        feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
-        logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+//        feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+//        logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         
         
         
-        let controllers =  [feedViewController, logInViewController]
-        tabBarController.viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
-        }
+//        let controllers =  [feedViewController, logInViewController]
+//        tabBarController.viewControllers = controllers.map {
+//            UINavigationController(rootViewController: $0)
+//        }
         
-        window.rootViewController = tabBarController
+        window.rootViewController = MainCoordinatorImp().startApplication()
         window.makeKeyAndVisible()
         
         self.window = window

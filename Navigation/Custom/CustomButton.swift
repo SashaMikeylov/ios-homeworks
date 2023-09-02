@@ -45,7 +45,7 @@ final class CustomButton: UIButton {
 
 extension UIButton {
     
-    func makeSystem(){
+    func makeSystem() {
         
         addTarget(self, action: #selector(holdOn), for:[
             .touchDown,
