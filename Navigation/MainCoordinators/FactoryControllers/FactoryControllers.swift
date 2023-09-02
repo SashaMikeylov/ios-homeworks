@@ -31,7 +31,7 @@ final class FactoryControllers {
             navigationController.title = "News"
             
         case .login:
-            let logInViewController = LogInViewController()
+            let logInViewController = LogInViewController(coordinator: <#T##FirstFlowCoordinator#>)
             logInViewController.loginDelegate = MyLoginFactory().makeLoginInspector()
             logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
             navigationController.setViewControllers([logInViewController], animated: true)
