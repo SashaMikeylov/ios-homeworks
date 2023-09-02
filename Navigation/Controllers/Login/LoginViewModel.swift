@@ -1,13 +1,12 @@
 //
-//  LogInViewController.swift
+//  LoginViewModel.swift
 //  Navigation
 //
-//  Created by Денис Кузьминов on 13.06.2023.
+//  Created by Денис Кузьминов on 02.09.2023.
 //
 
 import Foundation
 import UIKit
-
 
 protocol LoginViewControllerDelegate {
     func check(login: String, password: String) -> Bool
@@ -20,13 +19,11 @@ struct LoginInspector: LoginViewControllerDelegate {
     }
 }
 
-//MARK: - main Class
-
-class LogInViewController: UIViewController {
+//MARK: - Main Class
+    
+final class LoginViewModel: UIView {
     
     
-    var loginDelegate: LoginViewControllerDelegate?
-    private let coordinator: FirstFlowCoordinator
     
     private lazy var vkLogo: UIView = {
         let logo = UIView()
@@ -97,7 +94,7 @@ class LogInViewController: UIViewController {
         [ weak self ] in
         if self?.checker() == true {
             let profileViewController = ProfileViewController()
-            self?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.navController.pushViewController(profileViewController, animated: true)
         } else {
             self?.allert()
         }
@@ -126,43 +123,21 @@ class LogInViewController: UIViewController {
         
     }()
     
+//MARK: - Init
     
-    
-    
-    //MARK: -Life
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-       
-        
-        addSub()
-        setUp()
-        setupKeyboardObservers()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-        setupKeyboardObservers()
-    }
-    
-    
-    init(coordinator: FirstFlowCoordinator) {
-       
-        self.coordinator = coordinator
+    init() {
+        super.init(frame: .zero)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: -Func
+//MARK: - Func
     
     private func addSub(){
         
-        view.addSubview(scrollView)
+        self.addSubview(scrollView)
         
         
         contenView.addSubview(stackView)
@@ -175,13 +150,14 @@ class LogInViewController: UIViewController {
         
         
     }
-    //MARK: -SetUp
+    
+//MARK: - SetUp
     
     private func setUp(){
         
         logButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let safeArea = view.safeAreaLayoutGuide
+        let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             
             scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
@@ -230,7 +206,7 @@ class LogInViewController: UIViewController {
             
         ])
     }
-    //MARK: -func
+    
     
     private func setupKeyboardObservers(){
         
@@ -250,12 +226,10 @@ class LogInViewController: UIViewController {
         let allert = UIAlertController(title: "Wrong login or password ", message: "Try again !", preferredStyle: .alert)
         let allerAction = UIAlertAction(title: "Try again", style: .cancel)
         allert.addAction(allerAction)
-        present(allert, animated: true)
+        
     }
     
-    //MARK: -objc func
-    
-    
+//MARK: - Objc Func
     @objc func willShowKeyboard(_ notification: NSNotification){
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         scrollView.contentInset.bottom += keyboardHeight ?? 0.0
@@ -267,7 +241,8 @@ class LogInViewController: UIViewController {
     }
 }
     
-extension LogInViewController: UITextFieldDelegate{
+
+extension LoginViewModel: UITextFieldDelegate{
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -275,4 +250,3 @@ extension LogInViewController: UITextFieldDelegate{
         return true
     }
 }
-

@@ -29,6 +29,7 @@
 		24B517622AA1105200573BE7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517612AA1105200573BE7 /* MainCoordinator.swift */; };
 		24B517652AA1115900573BE7 /* FactoryControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517642AA1115900573BE7 /* FactoryControllers.swift */; };
 		24B517682AA31F8E00573BE7 /* FirstFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517672AA31F8E00573BE7 /* FirstFlowCoordinator.swift */; };
+		24B5176B2AA3235400573BE7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5176A2AA3235400573BE7 /* LoginViewModel.swift */; };
 		24B9FEAA2A4337AC00E546AD /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEA92A4337AC00E546AD /* Photos.swift */; };
 		24B9FEAC2A433B7E00E546AD /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */; };
 		24B9FEAF2A44C42A00E546AD /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */; };
@@ -108,6 +109,7 @@
 		24B517612AA1105200573BE7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		24B517642AA1115900573BE7 /* FactoryControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryControllers.swift; sourceTree = "<group>"; };
 		24B517672AA31F8E00573BE7 /* FirstFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFlowCoordinator.swift; sourceTree = "<group>"; };
+		24B5176A2AA3235400573BE7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		24B9FEA92A4337AC00E546AD /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -234,7 +236,6 @@
 		24A28A2F2A6C7C8B00C5E395 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
 				247E51682A2743F000E3C6AB /* ProfileViewController.swift */,
 				247E51292A094CD000E3C6AB /* ViewController.swift */,
 				247E51612A1D378900E3C6AB /* PostViewController.swift */,
@@ -294,6 +295,15 @@
 			path = MainCoordinators;
 			sourceTree = "<group>";
 		};
+		24B5176C2AA3236200573BE7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
+				24B5176A2AA3235400573BE7 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		24B9FEAD2A44548D00E546AD /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +325,7 @@
 		24C1E3232A5C2C1F0043B15E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24B5176C2AA3236200573BE7 /* Login */,
 				247E51652A27439200E3C6AB /* Profile */,
 				24A604772A7C591100737A5B /* Feed */,
 				24A28A2F2A6C7C8B00C5E395 /* Controllers */,
@@ -503,6 +514,7 @@
 				24A604762A7BADF100737A5B /* CustomButton.swift in Sources */,
 				247E513C2A0ABC0300E3C6AB /* FeedViewController.swift in Sources */,
 				247E512A2A094CD000E3C6AB /* ViewController.swift in Sources */,
+				24B5176B2AA3235400573BE7 /* LoginViewModel.swift in Sources */,
 				24B517622AA1105200573BE7 /* MainCoordinator.swift in Sources */,
 				24A28A2A2A6A7D0C00C5E395 /* UserBody.swift in Sources */,
 				24B517652AA1115900573BE7 /* FactoryControllers.swift in Sources */,
