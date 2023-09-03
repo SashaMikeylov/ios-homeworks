@@ -31,13 +31,17 @@ final class FactoryControllers {
             navigationController.title = "News"
             
         case .login:
-            let logInViewController = LogInViewController(coordinator: <#T##FirstFlowCoordinator#>)
+            let firstFlowCoordinator = FirstFlowCoordinator()
+            let logInViewController = LogInViewController()
+            logInViewController.coordinator = firstFlowCoordinator
+            firstFlowCoordinator.navController = navigationController
             logInViewController.loginDelegate = MyLoginFactory().makeLoginInspector()
             logInViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
             navigationController.setViewControllers([logInViewController], animated: true)
             
         case .profile:
-            let profileViewController = ProfileViewController()
+            let profileViewControllers = ProfileViewController()
+            profileViewController = profileViewControllers
         }
     }
     

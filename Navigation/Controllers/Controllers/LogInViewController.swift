@@ -26,7 +26,7 @@ class LogInViewController: UIViewController {
     
     
     var loginDelegate: LoginViewControllerDelegate?
-    private let coordinator: FirstFlowCoordinator
+    var coordinator: FirstFlowCoordinator?
     
     private lazy var vkLogo: UIView = {
         let logo = UIView()
@@ -96,8 +96,9 @@ class LogInViewController: UIViewController {
     private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue, action: {
         [ weak self ] in
         if self?.checker() == true {
-            let profileViewController = ProfileViewController()
-            self?.navigationController?.pushViewController(profileViewController, animated: true)
+//            let profileViewController = ProfileViewController()
+//            self?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.coordinator?.showProfile()
         } else {
             self?.allert()
         }
@@ -149,14 +150,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    init(coordinator: FirstFlowCoordinator) {
-       
-        self.coordinator = coordinator
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
 // MARK: -Func
     
