@@ -105,6 +105,7 @@ class PhotosViewController: UIViewController {
         let nanoTime = finish.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
         print("TimeInterval = \(timeInterval)")
+        photoCollection.reloadData()
     }
 }
 
