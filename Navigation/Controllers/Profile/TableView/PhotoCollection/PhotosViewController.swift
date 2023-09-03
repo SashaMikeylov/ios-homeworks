@@ -7,10 +7,26 @@
 
 import Foundation
 import UIKit
+import iOSIntPackage
 
 class PhotosViewController: UIViewController {
     
-    let photos = Photos.make()
+    let photos = Photos.makePhotos()
+    
+    var images: [UIImage] = []
+    
+    private  func castImages(photos: [Photo])  {
+       
+        
+        
+        for image in photos {
+            let photo = UIImage(named: image.photoName) ?? UIImage()
+            images.append(photo)
+            
+        }
+        
+        
+    }
     
     private let photoCollection: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -31,6 +47,7 @@ class PhotosViewController: UIViewController {
         tuneCollection()
         tuneView()
         setUp()
+        imageTune()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,19 +78,47 @@ class PhotosViewController: UIViewController {
             
         ])
     }
+    
+    private func imageTune(){
+        
+        let imageProcessor = ImageProcessor()
+        
+       castImages(photos: photos)
+        
+        let start = DispatchTime.now()
+        
+        
+        imageProcessor.processImagesOnThread(sourceImages: images, filter: .chrome, qos: .userInitiated)  {_ in
+            DispatchQueue.main.async {
+                self.photoCollection.reloadData()
+            }
+        }
+        
+        imageProcessor.processImagesOnThread(sourceImages: images, filter: .fade, qos: .utility) { _ in
+            
+            DispatchQueue.main.async {
+                self.photoCollection.reloadData()
+            }
+        }
+        
+        let finish = DispatchTime.now()
+        let nanoTime = finish.uptimeNanoseconds - start.uptimeNanoseconds
+        let timeInterval = Double(nanoTime) / 1_000_000_000
+        print("TimeInterval = \(timeInterval)")
+    }
 }
 
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.id, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(named: photos[indexPath.item].photoName)
+        cell.imageView.image = images[indexPath.item]
         
         return cell
     }

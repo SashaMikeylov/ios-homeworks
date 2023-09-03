@@ -79,7 +79,7 @@ class PhotosTableViewCell: UITableViewCell{
         return view
     }()
     
-    var photos = Photos.make()
+    var photos = Photos.makePhotos()
        
 //-----------------------------------------------func----------------------------------------------
     
@@ -161,7 +161,7 @@ class PhotosTableViewCell: UITableViewCell{
 //--------------------------------------configure---------------------------------------------
     
    private func configure(){
-        let photos = Photos.make()
+        let photos = Photos.makePhotos()
         photos.forEach{
             
             
