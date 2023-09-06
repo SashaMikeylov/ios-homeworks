@@ -14,7 +14,7 @@ class PhotosViewController: UIViewController {
     let photos = Photos.makePhotos()
     
     var images: [UIImage] = []
-    
+    var newAlbum: [UIImage] = []
     private  func castImages(photos: [Photo])  {
        
         
@@ -48,10 +48,12 @@ class PhotosViewController: UIViewController {
         tuneView()
         setUp()
         imageTune()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+        
     }
     
     private func tuneView(){
@@ -88,19 +90,24 @@ class PhotosViewController: UIViewController {
         let start = DispatchTime.now()
         
         
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .chrome, qos: .userInitiated)  {_ in
-            DispatchQueue.main.async {
-                self.photoCollection.reloadData()
-            }
-        }
-        
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .fade, qos: .utility) { _ in
+        imageProcessor.processImagesOnThread(sourceImages: images, filter: .chrome, qos: .userInitiated)  {
+            images in
+            
             
             DispatchQueue.main.async {
-                self.photoCollection.reloadData()
+                for image in images {
+                    guard let image = image else {return}
+                    self.newAlbum.append(UIImage(cgImage: image))
+                    
+                    
+                }
             }
         }
         
+        
+            
+        
+       
         let finish = DispatchTime.now()
         let nanoTime = finish.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
@@ -112,14 +119,14 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        newAlbum.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.id, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = images[indexPath.item]
+        cell.imageView.image = newAlbum[indexPath.item]
         
         return cell
     }
