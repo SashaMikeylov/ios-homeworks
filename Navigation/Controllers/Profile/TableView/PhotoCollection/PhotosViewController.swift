@@ -94,11 +94,11 @@ class PhotosViewController: UIViewController {
             images in
             
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 for image in images {
                     guard let image = image else {return}
-                    self.newAlbum.append(UIImage(cgImage: image))
-                    
+                    self?.newAlbum.append(UIImage(cgImage: image))
+                    self?.photoCollection.reloadData()
                     
                 }
             }
