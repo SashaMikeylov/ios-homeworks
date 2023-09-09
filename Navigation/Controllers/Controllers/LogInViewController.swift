@@ -59,7 +59,6 @@ class LogInViewController: UIViewController {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
         feed.placeholder = " User login"
-        feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
@@ -72,11 +71,10 @@ class LogInViewController: UIViewController {
         return feed
     }()
     
-    private lazy var passworFeed: UITextField = {
+    private lazy var passwordFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
         feed.placeholder = " User password"
-        feed.backgroundColor = .systemGray6
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
@@ -86,6 +84,24 @@ class LogInViewController: UIViewController {
         feed.clearButtonMode = UITextField.ViewMode.whileEditing
         feed.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         feed.delegate = self
+        
+        return feed
+    }()
+    
+    private lazy var emailView: UIView = {
+        let feed = UIView()
+        feed.translatesAutoresizingMaskIntoConstraints = false
+        feed.backgroundColor = .systemGray6
+        
+        
+        return feed
+    }()
+    
+    private lazy var passwordView: UIView = {
+        let feed = UIView()
+        feed.translatesAutoresizingMaskIntoConstraints = false
+        feed.backgroundColor = .systemGray6
+        
         
         
         return feed
@@ -155,13 +171,14 @@ class LogInViewController: UIViewController {
         
         
         contenView.addSubview(stackView)
-        stackView.addSubview(emailFeed)
-        stackView.addSubview(passworFeed)
+        stackView.addSubview(emailView)
+        stackView.addSubview(passwordView)
         stackView.addSubview(line)
         contenView.addSubview(vkLogo)
         contenView.addSubview(logButton)
         scrollView.addSubview(contenView)
-        
+        emailView.addSubview(emailFeed)
+        passwordView.addSubview(passwordFeed)
         
     }
     //MARK: -SetUp
@@ -195,28 +212,35 @@ class LogInViewController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: contenView.leftAnchor, constant: 16),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
-            emailFeed.topAnchor.constraint(equalTo: stackView.topAnchor),
-            emailFeed.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-            emailFeed.leftAnchor.constraint(equalTo: stackView.leftAnchor),
-            emailFeed.heightAnchor.constraint(equalToConstant: 50),
+            emailView.topAnchor.constraint(equalTo: stackView.topAnchor),
+            emailView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            emailView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            emailView.heightAnchor.constraint(equalToConstant: 50),
             
-            passworFeed.topAnchor.constraint(equalTo: emailFeed.bottomAnchor),
-            passworFeed.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-            passworFeed.leftAnchor.constraint(equalTo: stackView.leftAnchor),
-            passworFeed.heightAnchor.constraint(equalToConstant: 50),
+            passwordView.topAnchor.constraint(equalTo: emailView.bottomAnchor),
+            passwordView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            passwordView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            passwordView.heightAnchor.constraint(equalToConstant: 50),
             
             line.heightAnchor.constraint(equalToConstant: 0.5),
             line.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
             line.rightAnchor.constraint(equalTo: stackView.rightAnchor),
             line.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             
-            logButton.topAnchor.constraint(equalTo: passworFeed.bottomAnchor, constant: 16),
+            logButton.topAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 16),
             logButton.heightAnchor.constraint(equalToConstant: 50),
             logButton.leftAnchor.constraint(equalTo: contenView.leftAnchor, constant: 16),
             logButton.rightAnchor.constraint(equalTo: contenView.rightAnchor, constant: -16),
             
+            passwordFeed.leftAnchor.constraint(equalTo: passwordView.leftAnchor, constant: 7),
+            passwordFeed.rightAnchor.constraint(equalTo: passwordView.rightAnchor),
+            passwordFeed.topAnchor.constraint(equalTo: passwordView.topAnchor),
+            passwordFeed.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor),
             
-            
+            emailFeed.leftAnchor.constraint(equalTo: emailView.leftAnchor, constant: 7),
+            emailFeed.rightAnchor.constraint(equalTo: emailView.rightAnchor),
+            emailFeed.topAnchor.constraint(equalTo: emailView.topAnchor),
+            emailFeed.bottomAnchor.constraint(equalTo: emailView.bottomAnchor),
         ])
     }
     //MARK: -func
@@ -232,7 +256,7 @@ class LogInViewController: UIViewController {
     
     private func checker() -> Bool {
        
-        LoginInspector().check(login: emailFeed.text ?? "", password: passworFeed.text ?? "")
+        LoginInspector().check(login: emailFeed.text ?? "", password: passwordFeed.text ?? "")
     }
     
     private func allert(){

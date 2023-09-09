@@ -49,20 +49,27 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private lazy var statusField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.cornerRadius = 12
-        textField.placeholder = "Write your status"
+        textField.placeholder = " Write your status"
         textField.delegate = self
         textField.keyboardType = .default
         textField.returnKeyType = .done
         textField.clearButtonMode = .whileEditing
         
         return textField
+    }()
+    
+    private lazy var statusView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.cornerRadius = 12
+        
+        return view
     }()
     
     //MARK: - Init
@@ -89,8 +96,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(profileAvatar)
         addSubview(profileStatus)
         addSubview(profileButton)
-        addSubview(statusField)
+        statusView.addSubview(statusField)
         addSubview(profileName)
+        addSubview(statusView)
         
         profileButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -117,11 +125,16 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             profileButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             
             
-            statusField.heightAnchor.constraint(equalToConstant: 40),
-            statusField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            statusField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 130),
-            statusField.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            statusView.heightAnchor.constraint(equalToConstant: 40),
+            statusView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            statusView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            statusView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 130),
+            statusView.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            
+            statusField.leftAnchor.constraint(equalTo: statusView.leftAnchor, constant: 7),
+            statusField.rightAnchor.constraint(equalTo: statusView.rightAnchor),
+            statusField.topAnchor.constraint(equalTo: statusView.topAnchor),
+            statusField.bottomAnchor.constraint(equalTo: statusView.bottomAnchor),
             
         ])
     }
