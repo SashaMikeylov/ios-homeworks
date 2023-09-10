@@ -27,6 +27,8 @@ class LogInViewController: UIViewController {
     
     var loginDelegate: LoginViewControllerDelegate?
     
+    let bruteForceService = BrutForceService()
+    
     private lazy var vkLogo: UIView = {
         let logo = UIView()
         logo.layer.contents = UIImage(named: "logIn")?.cgImage
@@ -243,6 +245,7 @@ class LogInViewController: UIViewController {
             emailFeed.bottomAnchor.constraint(equalTo: emailView.bottomAnchor),
         ])
     }
+    
     //MARK: -func
     
     private func setupKeyboardObservers(){
