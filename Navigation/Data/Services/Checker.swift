@@ -12,7 +12,7 @@ class Checker {
     static let shared = Checker()
     
     private var userLogin = "login"
-    private var userPassword = "password"
+    private var userPassword = "pas"
     
     private init() {}
         

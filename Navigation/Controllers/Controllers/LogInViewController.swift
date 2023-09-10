@@ -143,8 +143,25 @@ class LogInViewController: UIViewController {
         
     }()
     
+    private lazy var helpButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Pick up a password ?", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(helpButtonPressed), for: .touchUpInside)
+        button.makeSystem()
+        
+        
+        return button
+    }()
     
+    private lazy var passwordActivityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView ()
+        activity.translatesAutoresizingMaskIntoConstraints = false
     
+        
+        return activity
+    }()
     
     //MARK: -Life
     
@@ -181,7 +198,8 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(contenView)
         emailView.addSubview(emailFeed)
         passwordView.addSubview(passwordFeed)
-        
+        contenView.addSubview(helpButton)
+        passwordView.addSubview(passwordActivityIndicator)
     }
     //MARK: -SetUp
     
@@ -206,7 +224,7 @@ class LogInViewController: UIViewController {
             
             vkLogo.heightAnchor.constraint(equalToConstant: 100),
             vkLogo.widthAnchor.constraint(equalToConstant: 100),
-            vkLogo.topAnchor.constraint(equalTo: contenView.topAnchor, constant: 120),
+            vkLogo.topAnchor.constraint(equalTo: contenView.topAnchor, constant: 100),
             vkLogo.centerXAnchor.constraint(equalTo: contenView.centerXAnchor),
             
             stackView.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120),
@@ -229,7 +247,7 @@ class LogInViewController: UIViewController {
             line.rightAnchor.constraint(equalTo: stackView.rightAnchor),
             line.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             
-            logButton.topAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 16),
+            logButton.topAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: 16),
             logButton.heightAnchor.constraint(equalToConstant: 50),
             logButton.leftAnchor.constraint(equalTo: contenView.leftAnchor, constant: 16),
             logButton.rightAnchor.constraint(equalTo: contenView.rightAnchor, constant: -16),
@@ -243,6 +261,15 @@ class LogInViewController: UIViewController {
             emailFeed.rightAnchor.constraint(equalTo: emailView.rightAnchor),
             emailFeed.topAnchor.constraint(equalTo: emailView.topAnchor),
             emailFeed.bottomAnchor.constraint(equalTo: emailView.bottomAnchor),
+            
+            helpButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            helpButton.centerXAnchor.constraint(equalTo: contenView.centerXAnchor),
+            
+            passwordActivityIndicator.topAnchor.constraint(equalTo: passwordView.topAnchor, constant: 1),
+            passwordActivityIndicator.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 1),
+            passwordActivityIndicator.rightAnchor.constraint(equalTo: passwordView.rightAnchor, constant: -30),
+            
+
         ])
     }
     
@@ -263,10 +290,38 @@ class LogInViewController: UIViewController {
     }
     
     private func allert(){
-        let allert = UIAlertController(title: "Wrong login or password ", message: "Try again !", preferredStyle: .alert)
-        let allerAction = UIAlertAction(title: "Try again", style: .cancel)
-        allert.addAction(allerAction)
-        present(allert, animated: true)
+        let alert = UIAlertController(title: "Wrong login or password ", message: "Try again !", preferredStyle: .alert)
+        let alerAction = UIAlertAction(title: "Try again", style: .cancel)
+        alert.addAction(alerAction)
+        present(alert, animated: true)
+    }
+    
+    private func helpsAlerts(){
+        let alert = UIAlertController(title: "Do you want to guess the password ?", message: "", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Yes", style: .destructive) {_ in
+            self.pickUpPAssword()
+        }
+        let alertAction1 = UIAlertAction(title: "No", style: .cancel)
+        alert.addAction(alertAction)
+        alert.addAction(alertAction1)
+        present(alert, animated: true)
+    }
+    
+    private func pickUpPAssword(){
+        
+        let queue = DispatchQueue(label: "PickUpQueue", attributes: .concurrent)
+        let dispatchWorkItem = DispatchWorkItem {
+            self.bruteForceService.bruteForce(passwordToUnlock: "pas")
+        }
+        
+        passwordActivityIndicator.startAnimating()
+        passwordFeed.isSecureTextEntry = false
+        queue.async(execute: dispatchWorkItem)
+        dispatchWorkItem.notify(queue: .main) {
+            self.passwordActivityIndicator.stopAnimating()
+            self.passwordFeed.text = "pas"
+        }
+        
     }
     
     //MARK: -objc func
@@ -281,7 +336,14 @@ class LogInViewController: UIViewController {
     @objc func willHIdeKeyboard(_ notification: NSNotification){
         scrollView.contentInset.bottom = 0.0
     }
+    
+    @objc func helpButtonPressed(){
+        helpsAlerts()
+    }
+    
 }
+
+//MARK: -Extensions
     
 extension LogInViewController: UITextFieldDelegate{
         
