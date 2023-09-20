@@ -18,9 +18,9 @@ class ProfileViewController: UIViewController {
          super.viewDidLoad()
          
          #if DEBUG
-         view.backgroundColor = .systemGray3
+         view.backgroundColor = .white
          #else
-         view.backgroundColor = .systemGray3
+         view.backgroundColor = .white
          #endif
          title = "Posts"
          tabBarController?.tabBar.isHidden = true

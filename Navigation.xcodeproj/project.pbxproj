@@ -25,6 +25,9 @@
 		24A28A342A6EA6C700C5E395 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A28A332A6EA6C700C5E395 /* LoginFactory.swift */; };
 		24A604762A7BADF100737A5B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A604752A7BADF000737A5B /* CustomButton.swift */; };
 		24A604792A7C592C00737A5B /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A604782A7C592C00737A5B /* FeedModel.swift */; };
+		24AAB6B12AB6FCE3004FF90F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */; };
+		24B517712AA5215B00573BE7 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 24B517702AA5215B00573BE7 /* iOSIntPackage */; };
+		24B517732AADB5F900573BE7 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517722AADB5F900573BE7 /* BruteForceService.swift */; };
 		24B517602AA1102400573BE7 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5175F2AA1102400573BE7 /* MainTabBarCoordinator.swift */; };
 		24B517622AA1105200573BE7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517612AA1105200573BE7 /* MainCoordinator.swift */; };
 		24B517652AA1115900573BE7 /* FactoryControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517642AA1115900573BE7 /* FactoryControllers.swift */; };
@@ -104,10 +107,15 @@
 		24A28A332A6EA6C700C5E395 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		24A604752A7BADF000737A5B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		24A604782A7C592C00737A5B /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+
+		24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		24B517722AADB5F900573BE7 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
+
 		24B5175F2AA1102400573BE7 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		24B517612AA1105200573BE7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		24B517642AA1115900573BE7 /* FactoryControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryControllers.swift; sourceTree = "<group>"; };
 		24B517672AA31F8E00573BE7 /* FirstFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFlowCoordinator.swift; sourceTree = "<group>"; };
+
 		24B9FEA92A4337AC00E546AD /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		24B9FEAE2A44C42A00E546AD /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24C1E33E2A5C2CEA0043B15E /* StorageService.framework in Frameworks */,
+				24B517712AA5215B00573BE7 /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +236,8 @@
 				249E03602A69B08D0055CADE /* UserService.swift */,
 				24A28A312A6E92E200C5E395 /* Checker.swift */,
 				24A28A332A6EA6C700C5E395 /* LoginFactory.swift */,
+				24B517722AADB5F900573BE7 /* BruteForceService.swift */,
+				24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -317,6 +328,10 @@
 			children = (
 				247E51652A27439200E3C6AB /* Profile */,
 				24A604772A7C591100737A5B /* Feed */,
+
+				247E51652A27439200E3C6AB /* Profile */,
+
+
 				24A28A2F2A6C7C8B00C5E395 /* Controllers */,
 			);
 			path = Controllers;
@@ -378,6 +393,7 @@
 			);
 			name = Navigation;
 			packageProductDependencies = (
+				24B517702AA5215B00573BE7 /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = 247E51222A094CD000E3C6AB /* Navigation.app */;
@@ -452,6 +468,7 @@
 			);
 			mainGroup = 247E51192A094CD000E3C6AB;
 			packageReferences = (
+				24B5176F2AA5215B00573BE7 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = 247E51232A094CD000E3C6AB /* Products */;
 			projectDirPath = "";
@@ -497,6 +514,7 @@
 			files = (
 				24B9FEAA2A4337AC00E546AD /* Photos.swift in Sources */,
 				24B9FEB32A44ECA400E546AD /* PhotoCell.swift in Sources */,
+				24AAB6B12AB6FCE3004FF90F /* NetworkService.swift in Sources */,
 				249CDD9F2A3F9081002C4EA5 /* PostTableViewCell.swift in Sources */,
 				247E51622A1D378900E3C6AB /* PostViewController.swift in Sources */,
 				24A604792A7C592C00737A5B /* FeedModel.swift in Sources */,
@@ -513,6 +531,7 @@
 				249E03612A69B08D0055CADE /* UserService.swift in Sources */,
 				247E51692A2743F000E3C6AB /* ProfileViewController.swift in Sources */,
 				24B9FEAC2A433B7E00E546AD /* PhotosTableViewCell.swift in Sources */,
+				24B517732AADB5F900573BE7 /* BruteForceService.swift in Sources */,
 				247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */,
 				24B517602AA1102400573BE7 /* MainTabBarCoordinator.swift in Sources */,
 				24B9FEAF2A44C42A00E546AD /* PhotosViewController.swift in Sources */,
@@ -870,6 +889,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24B5176F2AA5215B00573BE7 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24B517702AA5215B00573BE7 /* iOSIntPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24B5176F2AA5215B00573BE7 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			productName = iOSIntPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 247E511A2A094CD000E3C6AB /* Project object */;
 }
