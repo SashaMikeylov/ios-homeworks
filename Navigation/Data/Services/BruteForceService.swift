@@ -19,11 +19,9 @@ class BrutForceService {
         while password != passwordToUnlock { // Increase MAXIMUM_PASSWORD_SIZE value for more
             password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
             // Your stuff here
-            print(password)
+            
             // Your stuff here
         }
-        
-        print(password)
     }
 }
 

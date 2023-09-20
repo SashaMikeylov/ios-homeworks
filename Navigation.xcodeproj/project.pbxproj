@@ -25,6 +25,7 @@
 		24A28A342A6EA6C700C5E395 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A28A332A6EA6C700C5E395 /* LoginFactory.swift */; };
 		24A604762A7BADF100737A5B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A604752A7BADF000737A5B /* CustomButton.swift */; };
 		24A604792A7C592C00737A5B /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A604782A7C592C00737A5B /* FeedModel.swift */; };
+		24AAB6B12AB6FCE3004FF90F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */; };
 		24B517712AA5215B00573BE7 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 24B517702AA5215B00573BE7 /* iOSIntPackage */; };
 		24B517732AADB5F900573BE7 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B517722AADB5F900573BE7 /* BruteForceService.swift */; };
 		24B9FEAA2A4337AC00E546AD /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9FEA92A4337AC00E546AD /* Photos.swift */; };
@@ -102,6 +103,7 @@
 		24A28A332A6EA6C700C5E395 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		24A604752A7BADF000737A5B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		24A604782A7C592C00737A5B /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		24B517722AADB5F900573BE7 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
 		24B9FEA92A4337AC00E546AD /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		24B9FEAB2A433B7E00E546AD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				24A28A312A6E92E200C5E395 /* Checker.swift */,
 				24A28A332A6EA6C700C5E395 /* LoginFactory.swift */,
 				24B517722AADB5F900573BE7 /* BruteForceService.swift */,
+				24AAB6B02AB6FCE3004FF90F /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			files = (
 				24B9FEAA2A4337AC00E546AD /* Photos.swift in Sources */,
 				24B9FEB32A44ECA400E546AD /* PhotoCell.swift in Sources */,
+				24AAB6B12AB6FCE3004FF90F /* NetworkService.swift in Sources */,
 				249CDD9F2A3F9081002C4EA5 /* PostTableViewCell.swift in Sources */,
 				247E51622A1D378900E3C6AB /* PostViewController.swift in Sources */,
 				24A604792A7C592C00737A5B /* FeedModel.swift in Sources */,

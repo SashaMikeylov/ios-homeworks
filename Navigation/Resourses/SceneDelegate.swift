@@ -39,10 +39,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: $0)
         }
         
+        
+        
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
-        
         self.window = window
+        
+        var appConfiguration = AppConfiguration.people
+        let random = Int.random(in: 0 ... 2)
+        switch random {
+        case 0: appConfiguration = .people
+        case 1: appConfiguration = .planets
+        case 2: appConfiguration = .starships
+        default: break
+        }
+        
+        NetworkService.requst(config: appConfiguration)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
