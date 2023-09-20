@@ -26,6 +26,7 @@ class LogInViewController: UIViewController {
     
     
     var loginDelegate: LoginViewControllerDelegate?
+    var coordinator: FirstFlowCoordinator?
     
     let bruteForceService = BrutForceService()
     
@@ -113,8 +114,9 @@ class LogInViewController: UIViewController {
     private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue, action: {
         [ weak self ] in
         if self?.checker() == true {
-            let profileViewController = ProfileViewController()
-            self?.navigationController?.pushViewController(profileViewController, animated: true)
+//            let profileViewController = ProfileViewController()
+//            self?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.coordinator?.showProfile()
         } else {
             self?.allert()
         }
@@ -181,6 +183,9 @@ class LogInViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         setupKeyboardObservers()
     }
+    
+    
+    
     
 // MARK: -Func
     

@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class FeedModel {
+final class FeedModel {
     
     let secretWord = "Word"
     
