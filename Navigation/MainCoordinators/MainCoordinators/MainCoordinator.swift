@@ -12,6 +12,7 @@ protocol MainCoordinator {
     func startApplication() -> UIViewController
 }
 
+// Main Coordinator
 
 final class MainCoordinatorImp: MainCoordinator {
     
