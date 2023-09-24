@@ -49,16 +49,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
-        var appConfiguration = AppConfiguration.people
-        let random = Int.random(in: 0 ... 2)
-        switch random {
-        case 0: appConfiguration = .people
-        case 1: appConfiguration = .planets
-        case 2: appConfiguration = .starships
-        default: break
-        }
+      //  var appConfiguration = AppConfiguration.people
         
-        NetworkService.requst(config: appConfiguration)
+//        let random = Int.random(in: 0 ... 2)
+//        switch random {
+//        case 0: appConfiguration = .people
+//        case 1: appConfiguration = .planets
+//        case 2: appConfiguration = .starships
+//        default: break
+//        }
+        
+      //  NetworkService.requst(config: appConfiguration)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

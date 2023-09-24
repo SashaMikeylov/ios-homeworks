@@ -47,6 +47,18 @@ class FeedViewController: UIViewController {
         return label
     }()
     
+    private lazy var pushButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Tap", for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
+        button.layer.shadowOffset = CGSize(width: 10, height: 10)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        return button
+    }()
     
     //MARK: - Life
     
@@ -56,20 +68,10 @@ class FeedViewController: UIViewController {
         title = "Posts"
         view.backgroundColor = .white
         layout()
-        
-        
-//        checkGuessButton.callBack = { [ weak self ] in
-//            let feed = FeedModel()
-//            let userWord = self?.wordField.text ?? ""
-//            if feed.check(word: userWord) == true {
-//                self?.wordLabel.backgroundColor = .green
-//            } else {
-//                self?.wordLabel.backgroundColor = .red
-//            }
-//        }
+    
     }
     
-    //MARK: - Layput
+    //MARK: - Layout
     
     
     private func layout() {
@@ -80,6 +82,7 @@ class FeedViewController: UIViewController {
         view.addSubview(checkGuessButton)
         view.addSubview(textView)
         view.addSubview(wordLabel)
+        view.addSubview(pushButton)
         
         NSLayoutConstraint.activate([
             textView.heightAnchor.constraint(equalToConstant: 50),
@@ -103,13 +106,20 @@ class FeedViewController: UIViewController {
             wordLabel.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 50),
             wordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
+            pushButton.topAnchor.constraint(equalTo: checkGuessButton.bottomAnchor,constant: 30),
+            pushButton.widthAnchor.constraint(equalToConstant: 150),
+            pushButton.heightAnchor.constraint(equalToConstant: 40),
+            pushButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
     //MARK: - Func
     
     
-   
+    @objc private func buttonPressed(){
+        let infoViewController = InfoViewController()
+        navigationController?.pushViewController(infoViewController, animated: true)
+    }
     
     
 }
