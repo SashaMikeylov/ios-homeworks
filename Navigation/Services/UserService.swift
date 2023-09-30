@@ -10,21 +10,21 @@ import UIKit
 
 protocol UserService {
 
-    func searchUser(login: UserBody) -> UserBody?
+    func searchUser(login: UserModel) -> UserModel?
 }
 
 //MARK: -Servise
 
 class CurrentUserService: UserService {
     
-    var user: UserBody
+    var user: UserModel
     
     
-    init(user: UserBody) {
+    init(user: UserModel) {
         self.user = user
     }
     
-    func searchUser(login: UserBody) -> UserBody? {
+    func searchUser(login: UserModel) -> UserModel? {
         if login.login == user.login {
             return user
         }
@@ -34,13 +34,13 @@ class CurrentUserService: UserService {
 
 class TestUserService: UserService {
     
-    var user: UserBody
+    var user: UserModel
 
-    init(user: UserBody) {
+    init(user: UserModel) {
         self.user = user
     }
     
-    func searchUser(login: UserBody) -> UserBody? {
+    func searchUser(login: UserModel) -> UserModel? {
         if login.login == user.login {
             return user
         }

@@ -111,7 +111,8 @@ extension ProfileViewController: UITableViewDelegate {
             
             if section == 0 {
                 guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.id) as? ProfileHeaderView else { fatalError() }
-                header.userConfig(user: User().user!)
+//                guard let user = mainUser else {return nil}
+//                header.userConfig(user: user)
                 return header
             }
             return nil

@@ -7,18 +7,48 @@
 
 import Foundation
 import UIKit
-
+import FirebaseAuth
 
 protocol LoginViewControllerDelegate {
-    func check(login: String, password: String) -> Bool
+
+    func signIn(email: String,
+                password: String)
+    
+    func logIn(email: String,
+                    password: String)
+    
 }
+
+
+var mainUser: UserBone?
 
 struct LoginInspector: LoginViewControllerDelegate {
     
-    func check(login: String, password: String) -> Bool {
-        return Checker.shared.check(login: login, password: password)
+    func signIn(email: String, password: String) {
+        CheckerService().signIn(email: email, password: password) { result in
+            switch result {
+            case let .success(user):
+                mainUser = user
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        mainUser = nil
+    }
+    
+    func logIn(email: String, password: String) {
+        CheckerService().createUser(email: email, password: password) { result in
+            switch result {
+            case let .success(user):
+                mainUser = user
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        mainUser = nil
     }
 }
+
 
 //MARK: - main Class
 
@@ -61,7 +91,7 @@ class LogInViewController: UIViewController {
     private lazy var emailFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " User login"
+        feed.placeholder = " User email"
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
@@ -111,16 +141,18 @@ class LogInViewController: UIViewController {
     }()
     
     
-    private lazy var logButton = CustomButton(title: "Log In", bgColor: .systemBlue, action: {
+    private lazy var logButton = CustomButton(title: "Sign In", bgColor: .systemBlue, action: {
         [ weak self ] in
-        if self?.checker() == true {
-//            let profileViewController = ProfileViewController()
-//            self?.navigationController?.pushViewController(profileViewController, animated: true)
+        if self?.changeButton.titleLabel?.text == "Log In" {
+            self?.signIn()
             self?.coordinator?.showProfile()
         } else {
-            self?.allert()
+            self?.logIn()
+            self?.coordinator?.showProfile()
         }
     })
+        
+    
     
     
     private lazy var scrollView: UIScrollView = {
@@ -165,14 +197,23 @@ class LogInViewController: UIViewController {
         return activity
     }()
     
+    private lazy var changeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Log In", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.setTitleColor(UIColor.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(changeButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: -Life
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
        
-        
         addSub()
         setUp()
         setupKeyboardObservers()
@@ -183,11 +224,10 @@ class LogInViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         setupKeyboardObservers()
     }
-    
-    
-    
-    
+
 // MARK: -Func
+    
+    
     
     private func addSub(){
         
@@ -205,6 +245,7 @@ class LogInViewController: UIViewController {
         passwordView.addSubview(passwordFeed)
         contenView.addSubview(helpButton)
         passwordView.addSubview(passwordActivityIndicator)
+        contenView.addSubview(changeButton)
     }
     //MARK: -SetUp
     
@@ -274,7 +315,10 @@ class LogInViewController: UIViewController {
             passwordActivityIndicator.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 1),
             passwordActivityIndicator.rightAnchor.constraint(equalTo: passwordView.rightAnchor, constant: -30),
             
-
+            changeButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 15),
+            changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            changeButton.heightAnchor.constraint(equalToConstant: 100),
+            changeButton.widthAnchor.constraint(equalToConstant: 100),
         ])
     }
     
@@ -289,13 +333,34 @@ class LogInViewController: UIViewController {
         noficiationCenter.addObserver(self, selector: #selector(willHIdeKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func checker() -> Bool {
-       
-        LoginInspector().check(login: emailFeed.text ?? "", password: passwordFeed.text ?? "")
+    private func signIn() {
+        if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
+            allert(error: .emptyField)
+        }
+        loginDelegate?.signIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "")
     }
     
-    private func allert(){
-        let alert = UIAlertController(title: "Wrong login or password ", message: "Try again !", preferredStyle: .alert)
+    private func logIn() {
+        if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
+            allert(error: .emptyField)
+        }
+        loginDelegate?.logIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "")
+    }
+    
+    private func allert(error: LoginErrors){
+        
+        let message: String
+        
+        switch error {
+        case .notAuth:
+             message = "Not Auth"
+        case .emptyField:
+             message = "Empty fields"
+        case .wrongPasswordEmail:
+             message = "Wrong password or email"
+        }
+        
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let alerAction = UIAlertAction(title: "Try again", style: .cancel)
         alert.addAction(alerAction)
         present(alert, animated: true)
@@ -346,6 +411,15 @@ class LogInViewController: UIViewController {
         helpsAlerts()
     }
     
+    @objc private func changeButtonAction(){
+        if logButton.titleLabel?.text == "Sign In" {
+            logButton.setTitle("Log In", for: .normal)
+            changeButton.setTitle("Sign In", for: .normal)
+        } else {
+            logButton.setTitle("Sign In", for: .normal)
+            changeButton.setTitle("Log In", for: .normal)
+        }
+    }
 }
 
 //MARK: -Extensions
@@ -359,3 +433,8 @@ extension LogInViewController: UITextFieldDelegate{
     }
 }
 
+enum LoginErrors: Error {
+    case wrongPasswordEmail
+    case notAuth
+    case emptyField
+}

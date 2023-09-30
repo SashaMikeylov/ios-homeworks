@@ -3,7 +3,7 @@
 import UIKit
 
 
-class ProfileHeaderView: UITableViewHeaderFooterView {
+final class ProfileHeaderView: UITableViewHeaderFooterView {
     
     static let id = "ProfileHeaderView"
     
@@ -22,10 +22,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.backgroundColor = .white
         avatar.layer.cornerRadius = 50
-        avatar.layer.contents = UIImage(named:"profileAvatar")?.cgImage
         avatar.layer.borderWidth = 3
         avatar.layer.borderColor = UIColor.white.cgColor
         avatar.layer.masksToBounds = true
+        avatar.layer.contents = UIImage(named: "Avatar-3")?.cgImage
         
         return avatar
     }()
@@ -91,7 +91,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     //MARK: - Layout
     
     
-    func setUp(){
+  private  func setUp(){
         
         addSubview(profileAvatar)
         addSubview(profileStatus)
@@ -141,10 +141,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - Func
     
-    func userConfig(user: UserBody){
-        profileName.text = user.fullName
-        profileStatus.text = user.status
-        profileAvatar.layer.contents = user.avatar.cgImage
+    func userConfig(user: UserBone){
+        profileName.text = user.name
+        profileStatus.text = user.email
     }
     
     private var statusText: String = ""

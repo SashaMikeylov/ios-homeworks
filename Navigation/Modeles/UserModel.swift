@@ -7,15 +7,15 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
-
-struct UserBody {
+struct UserModel {
     
     var login: String
     var fullName: String
     var avatar: UIImage
     var status: String
-    
+
 }
 
 
