@@ -15,61 +15,38 @@ enum CheckerErrors: Error {
 
 protocol CheckerServiceProtocol {
     
-    func signIn(email: String,
+    func checkCredentials(email: String,
                 password: String,
-                completion: @escaping(Result <UserBone, CheckerErrors>) -> Void)
+                completion: @escaping(Bool) -> Void)
     
-    func createUser(email: String,
+    func signUp(email: String,
                 password: String,
-                completion: @escaping (Result<UserBone, CheckerErrors>) -> Void)
-    
-//    func sighOut(completion: @escaping (Result<Void, CheckerErrors>) -> Void)
+                completion: @escaping (Bool) -> Void)
+
 }
 
 
 final class CheckerService: CheckerServiceProtocol {
     
-    func signIn(email: String, password: String, completion: @escaping (Result<UserBone, CheckerErrors>) -> Void) {
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { (authdata, error) in
-            if let error {
-                completion(.failure(.custom(reason: error.localizedDescription)))
-                return
+    func checkCredentials(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if error == nil, authResult != nil {
+                completion(true)
+            } else {
+                completion(false)
             }
-            guard let firUser = authdata?.user else {
-                completion(.failure(.notAuth))
-                return
-            }
-            
-            let user = UserBone(filUser: firUser)
-            completion(.success(user))
         }
     }
     
-    func createUser(email: String, password: String, completion: @escaping (Result<UserBone, CheckerErrors>) -> Void) {
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) {authData, error in
-            if let error {
-                completion(.failure(.custom(reason: error.localizedDescription)))
-                return
+    func signUp(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResul, error in
+            if error == nil, authResul != nil {
+                completion(true)
+            } else {
+                completion(false)
             }
-            
-            guard let firUser = authData?.user else {
-                completion(.failure(.notAuth))
-                return
-            }
-            
-            let user = UserBone(filUser: firUser)
-            completion(.success(user))
         }
     }
-    
-//    func sighOut(completion: @escaping (Result<Void, CheckerErrors>) -> Void) {
-//        do {
-//            try FirebaseAuth.Auth.auth().signOut()
-//            completion(.success(()))
-//        } catch {
-//            completion(.failure(.custom(reason: error.localizedDescription)))
-//        }
-//    }
 }
 
 

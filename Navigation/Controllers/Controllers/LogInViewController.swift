@@ -12,10 +12,12 @@ import FirebaseAuth
 protocol LoginViewControllerDelegate {
 
     func signIn(email: String,
-                password: String)
+                password: String,
+                completion: @escaping (Bool) -> Void)
     
-    func logIn(email: String,
-                    password: String)
+    func checkCredentials(email: String,
+                          password: String,
+                          completion: @escaping (Bool) -> Void)
     
 }
 
@@ -24,28 +26,16 @@ var mainUser: UserBone?
 
 struct LoginInspector: LoginViewControllerDelegate {
     
-    func signIn(email: String, password: String) {
-        CheckerService().signIn(email: email, password: password) { result in
-            switch result {
-            case let .success(user):
-                mainUser = user
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-        mainUser = nil
+    func signIn(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        CheckerService().signUp(email: email, password: password, completion: { result in
+            completion(result)
+        })
     }
     
-    func logIn(email: String, password: String) {
-        CheckerService().createUser(email: email, password: password) { result in
-            switch result {
-            case let .success(user):
-                mainUser = user
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-        mainUser = nil
+    func checkCredentials(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        CheckerService().checkCredentials(email: email, password: password, completion: { result in
+            completion(result)
+        })
     }
 }
 
@@ -144,11 +134,9 @@ class LogInViewController: UIViewController {
     private lazy var logButton = CustomButton(title: "Sign In", bgColor: .systemBlue, action: {
         [ weak self ] in
         if self?.changeButton.titleLabel?.text == "Log In" {
-            self?.signIn()
-            self?.coordinator?.showProfile()
+            self?.checkCredentials()
         } else {
-            self?.logIn()
-            self?.coordinator?.showProfile()
+            self?.SignIn()
         }
     })
         
@@ -204,6 +192,11 @@ class LogInViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         button.setTitleColor(UIColor.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(changeButtonAction), for: .touchUpInside)
+        button.layer.borderWidth = 0.5
+        button.layer.cornerRadius = 15
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.makeSystem()
+        
         return button
     }()
     
@@ -315,10 +308,10 @@ class LogInViewController: UIViewController {
             passwordActivityIndicator.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 1),
             passwordActivityIndicator.rightAnchor.constraint(equalTo: passwordView.rightAnchor, constant: -30),
             
-            changeButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 15),
+            changeButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 25),
             changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            changeButton.heightAnchor.constraint(equalToConstant: 100),
-            changeButton.widthAnchor.constraint(equalToConstant: 100),
+            changeButton.heightAnchor.constraint(equalToConstant: 50),
+            changeButton.widthAnchor.constraint(equalToConstant: 70),
         ])
     }
     
@@ -333,18 +326,35 @@ class LogInViewController: UIViewController {
         noficiationCenter.addObserver(self, selector: #selector(willHIdeKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func signIn() {
+    private func SignIn() {
+        
         if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
             allert(error: .emptyField)
         }
-        loginDelegate?.signIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "")
+        
+        loginDelegate?.signIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "", completion: { [weak self] result in
+            if result {
+                self?.coordinator?.showProfile()
+            } else {
+                self?.allert(error: .wrongPasswordEmail)
+            }
+        })
     }
     
-    private func logIn() {
+    private func checkCredentials() {
+        
         if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
             allert(error: .emptyField)
         }
-        loginDelegate?.logIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "")
+        
+        loginDelegate?.checkCredentials(email: emailFeed.text ?? "", password: passwordFeed.text ?? "", completion: { [weak self] result in
+            if result {
+                self?.coordinator?.showProfile()
+            } else {
+                self?.allert(error: .notAuth)
+            }
+        })
+        
     }
     
     private func allert(error: LoginErrors){
