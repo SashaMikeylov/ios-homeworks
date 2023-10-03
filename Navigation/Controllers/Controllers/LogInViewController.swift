@@ -133,11 +133,7 @@ class LogInViewController: UIViewController {
     
     private lazy var logButton = CustomButton(title: "Sign In", bgColor: .systemBlue, action: {
         [ weak self ] in
-        if self?.changeButton.titleLabel?.text == "Log In" {
-            self?.checkCredentials()
-        } else {
-            self?.SignIn()
-        }
+        self?.SignIn()
     })
         
     
@@ -185,13 +181,13 @@ class LogInViewController: UIViewController {
         return activity
     }()
     
-    private lazy var changeButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         button.setTitleColor(UIColor.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(changeButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         button.layer.borderWidth = 0.5
         button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.systemBlue.cgColor
@@ -238,7 +234,7 @@ class LogInViewController: UIViewController {
         passwordView.addSubview(passwordFeed)
         contenView.addSubview(helpButton)
         passwordView.addSubview(passwordActivityIndicator)
-        contenView.addSubview(changeButton)
+        contenView.addSubview(signUpButton)
     }
     //MARK: -SetUp
     
@@ -308,10 +304,10 @@ class LogInViewController: UIViewController {
             passwordActivityIndicator.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 1),
             passwordActivityIndicator.rightAnchor.constraint(equalTo: passwordView.rightAnchor, constant: -30),
             
-            changeButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 25),
-            changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            changeButton.heightAnchor.constraint(equalToConstant: 50),
-            changeButton.widthAnchor.constraint(equalToConstant: 70),
+            signUpButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 25),
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: 50),
+            signUpButton.widthAnchor.constraint(equalToConstant: 90),
         ])
     }
     
@@ -421,20 +417,14 @@ class LogInViewController: UIViewController {
         helpsAlerts()
     }
     
-    @objc private func changeButtonAction(){
-        if logButton.titleLabel?.text == "Sign In" {
-            logButton.setTitle("Log In", for: .normal)
-            changeButton.setTitle("Sign In", for: .normal)
-        } else {
-            logButton.setTitle("Sign In", for: .normal)
-            changeButton.setTitle("Log In", for: .normal)
-        }
+    @objc private func signUp() {
+        checkCredentials()
     }
 }
 
 //MARK: -Extensions
     
-extension LogInViewController: UITextFieldDelegate{
+extension LogInViewController: UITextFieldDelegate {
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
