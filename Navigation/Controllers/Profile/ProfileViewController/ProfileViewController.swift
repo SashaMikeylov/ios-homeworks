@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
         tablePost.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
         tablePost.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.id)
         tablePost.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.id)
-       
+    
         
         
         tablePost.dataSource = self
@@ -111,8 +111,6 @@ extension ProfileViewController: UITableViewDelegate {
             
             if section == 0 {
                 guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.id) as? ProfileHeaderView else { fatalError() }
-//                guard let user = mainUser else {return nil}
-//                header.userConfig(user: user)
                 return header
             }
             return nil

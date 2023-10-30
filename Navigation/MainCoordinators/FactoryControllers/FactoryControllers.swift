@@ -15,6 +15,7 @@ final class FactoryControllers {
         case feed
         case login
         case profile
+        case favorites
     }
     
     private let flow: Flow
@@ -24,6 +25,7 @@ final class FactoryControllers {
     private func startAplication(){
         
         switch flow {
+            
         case .feed:
             let feedViewController = FeedViewController()
             feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
@@ -42,6 +44,11 @@ final class FactoryControllers {
         case .profile:
             let profileViewControllers = ProfileViewController()
             profileViewController = profileViewControllers
+            
+        case .favorites:
+            let favoritesViewController = FavoritePostsViewControllerL()
+            favoritesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+            navigationController.setViewControllers([favoritesViewController], animated: true)
         }
     }
     

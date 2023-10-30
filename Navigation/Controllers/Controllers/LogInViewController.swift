@@ -44,7 +44,7 @@ struct LoginInspector: LoginViewControllerDelegate {
 
 class LogInViewController: UIViewController {
     
-    
+
     var loginDelegate: LoginViewControllerDelegate?
     var coordinator: FirstFlowCoordinator?
     
@@ -201,7 +201,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+       
        
         addSub()
         setUp()
@@ -324,17 +324,21 @@ class LogInViewController: UIViewController {
     
     private func SignIn() {
         
-        if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
-            allert(error: .emptyField)
-        }
         
-        loginDelegate?.signIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "", completion: { [weak self] result in
-            if result {
-                self?.coordinator?.showProfile()
-            } else {
-                self?.allert(error: .wrongPasswordEmail)
-            }
-        })
+        coordinator?.showProfile()
+//        if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
+//            allert(error: .emptyField)
+//        }
+//        
+//        
+//        
+//        loginDelegate?.signIn(email: emailFeed.text ?? "", password: passwordFeed.text ?? "", completion: { [weak self] result in
+//            if result {
+//                self?.coordinator?.showProfile()
+//            } else {
+//                self?.allert(error: .wrongPasswordEmail)
+//            }
+//        })
     }
     
     private func checkCredentials() {

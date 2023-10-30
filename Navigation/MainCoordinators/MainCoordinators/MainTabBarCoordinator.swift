@@ -12,7 +12,7 @@ final class MainTabBarCoordinator: UITabBarController {
     
     private let feedViewControler = FactoryControllers(flow: .feed)
     private let loginViewController = FactoryControllers(flow: .login)
-    
+    private let favoritesViewController = FactoryControllers(flow: .favorites)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,6 @@ final class MainTabBarCoordinator: UITabBarController {
     }
     
     private func setViewControllers(){
-        viewControllers = [feedViewControler.navigationController, loginViewController.navigationController]
+        viewControllers = [feedViewControler.navigationController, loginViewController.navigationController, favoritesViewController.navigationController]
     }
 }
