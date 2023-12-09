@@ -60,6 +60,30 @@ class FeedViewController: UIViewController {
         return button
     }()
     
+    private lazy var mapButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Map button", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .green
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(mapButtonPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var mapButton1: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Map button 1", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .green
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(mapButtonPressed1), for: .touchUpInside)
+        
+        return button
+    }()
+    
     //MARK: - Life
     
     override func viewDidLoad() {
@@ -83,6 +107,8 @@ class FeedViewController: UIViewController {
         view.addSubview(textView)
         view.addSubview(wordLabel)
         view.addSubview(pushButton)
+        view.addSubview(mapButton1)
+        view.addSubview(mapButton)
         
         NSLayoutConstraint.activate([
             textView.heightAnchor.constraint(equalToConstant: 50),
@@ -110,6 +136,16 @@ class FeedViewController: UIViewController {
             pushButton.widthAnchor.constraint(equalToConstant: 150),
             pushButton.heightAnchor.constraint(equalToConstant: 40),
             pushButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            mapButton1.heightAnchor.constraint(equalToConstant: 50),
+            mapButton1.widthAnchor.constraint(equalToConstant: 150),
+            mapButton1.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            mapButton1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            mapButton.heightAnchor.constraint(equalToConstant: 50),
+            mapButton.widthAnchor.constraint(equalToConstant: 150),
+            mapButton.bottomAnchor.constraint(equalTo: mapButton1.topAnchor, constant: -30),
+            mapButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
@@ -121,6 +157,15 @@ class FeedViewController: UIViewController {
         navigationController?.pushViewController(infoViewController, animated: true)
     }
     
+    @objc private func mapButtonPressed() {
+        let viewController = MapViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func mapButtonPressed1() {
+        let viewController = SecondMapViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
 }
 

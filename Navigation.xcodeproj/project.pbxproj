@@ -11,9 +11,10 @@
 		240E9FC32AECDDD900E93890 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240E9FC22AECDDD900E93890 /* CoreDataService.swift */; };
 		240E9FC72AED463A00E93890 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51632A226AE200E3C6AB /* Post.swift */; };
 		240E9FD62AEEFA2300E93890 /* Navigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 240E9FD42AEEFA2300E93890 /* Navigation.xcdatamodeld */; };
+		240EA0492B23B48400E93890 /* SecondMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240EA0482B23B48400E93890 /* SecondMapViewController.swift */; };
 		247E51262A094CD000E3C6AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51252A094CD000E3C6AB /* AppDelegate.swift */; };
 		247E51282A094CD000E3C6AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51272A094CD000E3C6AB /* SceneDelegate.swift */; };
-		247E512A2A094CD000E3C6AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51292A094CD000E3C6AB /* ViewController.swift */; };
+		247E512A2A094CD000E3C6AB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E51292A094CD000E3C6AB /* MapViewController.swift */; };
 		247E512F2A094CD500E3C6AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 247E512E2A094CD500E3C6AB /* Assets.xcassets */; };
 		247E513C2A0ABC0300E3C6AB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */; };
 		247E513E2A0D314C00E3C6AB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E513D2A0D314C00E3C6AB /* InfoViewController.swift */; };
@@ -96,10 +97,11 @@
 		240E9FC02AECDBDB00E93890 /* FavoritePostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostsViewController.swift; sourceTree = "<group>"; };
 		240E9FC22AECDDD900E93890 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		240E9FD52AEEFA2300E93890 /* Navigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navigation.xcdatamodel; sourceTree = "<group>"; };
+		240EA0482B23B48400E93890 /* SecondMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMapViewController.swift; sourceTree = "<group>"; };
 		247E51222A094CD000E3C6AB /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		247E51252A094CD000E3C6AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		247E51272A094CD000E3C6AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		247E51292A094CD000E3C6AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		247E51292A094CD000E3C6AB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		247E512E2A094CD500E3C6AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		247E51332A094CD500E3C6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		247E513B2A0ABC0300E3C6AB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -264,9 +266,10 @@
 			isa = PBXGroup;
 			children = (
 				249CDD982A386F87002C4EA5 /* LogInViewController.swift */,
-				247E51292A094CD000E3C6AB /* ViewController.swift */,
+				247E51292A094CD000E3C6AB /* MapViewController.swift */,
 				247E51612A1D378900E3C6AB /* PostViewController.swift */,
 				240E9FC02AECDBDB00E93890 /* FavoritePostsViewController.swift */,
+				240EA0482B23B48400E93890 /* SecondMapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -547,7 +550,7 @@
 				24A604792A7C592C00737A5B /* FeedModel.swift in Sources */,
 				24A604762A7BADF100737A5B /* CustomButton.swift in Sources */,
 				247E513C2A0ABC0300E3C6AB /* FeedViewController.swift in Sources */,
-				247E512A2A094CD000E3C6AB /* ViewController.swift in Sources */,
+				247E512A2A094CD000E3C6AB /* MapViewController.swift in Sources */,
 				24B517622AA1105200573BE7 /* MainCoordinator.swift in Sources */,
 				24A28A2A2A6A7D0C00C5E395 /* UserModel.swift in Sources */,
 				240E9FC72AED463A00E93890 /* Post.swift in Sources */,
@@ -567,6 +570,7 @@
 				24ABD2642AC7721400E8C269 /* UserBone.swift in Sources */,
 				24B517602AA1102400573BE7 /* MainTabBarCoordinator.swift in Sources */,
 				24B9FEAF2A44C42A00E546AD /* PhotosViewController.swift in Sources */,
+				240EA0492B23B48400E93890 /* SecondMapViewController.swift in Sources */,
 				249CDD992A386F87002C4EA5 /* LogInViewController.swift in Sources */,
 				24A28A342A6EA6C700C5E395 /* LoginFactory.swift in Sources */,
 				247E51672A2743BC00E3C6AB /* ProfileHeaderView.swift in Sources */,
@@ -736,6 +740,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please give location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -766,6 +771,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please give location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
