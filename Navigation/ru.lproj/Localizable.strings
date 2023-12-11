@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Денис Кузьминов on 11.12.2023.
+  
+*/
+
+//MARK: - Feed screen
+
+"feed_title" = "Посты";
+"feed_tapButton" = "Нажми";
+"feed_checkButton" = "Проверить";
+"feed_mapButton" = "Карта";
+"feed_mapButton1" = "Карта1";
+
+//MARK: - Authorize
+
+"log_email" = "Почта пользователя";
+"log_password" = "Пароль пользователя";
+"log_pickupButton" = "Подобрать пароль";
+"log_siginButton" = "Войти";
+"log_signupButton" = "Зарегистрироваться";
+
+//MARK: - Profile
+
+"prof_title" = "Посты";
+"prof_status" = "Ожидает чего-то";
+"prof_writeStatus" = "Напишите свой статус";
+"prof_statusButton" = "Показать статус";
+"prof_photosTitle" = "Фотографии";
+"prof_likes" = "Лайки";
+"prof_views" = "Просмотры";
+
+//MARK: - Photos
+
+"photo_title" = "Фотогалерея";
+
+//MARK: - Favorites
+
+"favorite_title" = "Избранные посты";
+"favorite_deleteButton" = "Удалить все";
+"favorite_alert" = "Вы хотите удалить посты ?";
+"favorite_deleteButton" = "Удалить";
+"favorite_cancelButton" = "Отменить";

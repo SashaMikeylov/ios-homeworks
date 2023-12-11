@@ -81,7 +81,7 @@ class LogInViewController: UIViewController {
     private lazy var emailFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " User email"
+        feed.placeholder = NSLocalizedString("log_email", comment: "-")
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
@@ -97,7 +97,7 @@ class LogInViewController: UIViewController {
     private lazy var passwordFeed: UITextField = {
         let feed = UITextField()
         feed.translatesAutoresizingMaskIntoConstraints = false
-        feed.placeholder = " User password"
+        feed.placeholder = NSLocalizedString("log_password", comment: "-")
         feed.textColor = .black
         feed.font = UIFont.systemFont(ofSize: 16)
         feed.autocapitalizationType = .none
@@ -131,7 +131,7 @@ class LogInViewController: UIViewController {
     }()
     
     
-    private lazy var logButton = CustomButton(title: "Sign In", bgColor: .systemBlue, action: {
+    private lazy var logButton = CustomButton(title: NSLocalizedString("log_siginButton", comment: "-"), bgColor: .systemBlue, action: {
         [ weak self ] in
         self?.SignIn()
     })
@@ -164,7 +164,7 @@ class LogInViewController: UIViewController {
     private lazy var helpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Pick up a password ?", for: .normal)
+        button.setTitle(NSLocalizedString("log_pickupButton", comment: "-"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(helpButtonPressed), for: .touchUpInside)
         button.makeSystem()
@@ -184,7 +184,7 @@ class LogInViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(NSLocalizedString("log_siginButton", comment: "-"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         button.setTitleColor(UIColor.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(signUp), for: .touchUpInside)

@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
          #else
          view.backgroundColor = .white
          #endif
-         title = "Posts"
+         title = NSLocalizedString("prof_title", comment: "-")
          tabBarController?.tabBar.isHidden = true
          self.navigationController?.navigationBar.prefersLargeTitles = true
          

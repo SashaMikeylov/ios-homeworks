@@ -23,8 +23,8 @@ final class FavoritePostsViewControllerL: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Favorite posts"
-        navigationController?.navigationBar.prefersLargeTitles = true 
+        title = NSLocalizedString("favorite_title", comment: "-")
+        navigationController?.navigationBar.prefersLargeTitles = true
         layout()
         tableTune()
         navBarTune()
@@ -58,17 +58,17 @@ final class FavoritePostsViewControllerL: UIViewController {
     
     
     private func navBarTune() {
-        let navBarButtton = UIBarButtonItem(title: "Delete all", style: .plain, target: self, action: #selector(barButtonAcion))
+        let navBarButtton = UIBarButtonItem(title: NSLocalizedString("favorite_deleteButton", comment: "-"), style: .plain, target: self, action: #selector(barButtonAcion))
         navigationItem.rightBarButtonItem = navBarButtton
     }
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "", message: "Do you want delete all posts?", preferredStyle: .alert)
-        let alertAction1 = UIAlertAction(title: "Delete", style: .default) { _ in
+        let alertController = UIAlertController(title: "", message: NSLocalizedString("favorite_alert", comment: "-"), preferredStyle: .alert)
+        let alertAction1 = UIAlertAction(title: NSLocalizedString("favorite_deleteButton", comment: "-"), style: .default) { _ in
             CoreDataService.shared.deletePosts()
             self.tableView.reloadData()
         }
-        let alertAction2 = UIAlertAction(title: "Cancel", style: .cancel)
+        let alertAction2 = UIAlertAction(title: NSLocalizedString("favorite_cancelButton" , comment: "-"), style: .cancel)
         alertController.addAction(alertAction2)
         alertController.addAction(alertAction1)
         present(alertController, animated: true)
