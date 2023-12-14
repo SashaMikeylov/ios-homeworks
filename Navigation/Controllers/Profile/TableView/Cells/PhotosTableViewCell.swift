@@ -23,7 +23,7 @@ class PhotosTableViewCell: UITableViewCell{
     
     private let titlePhoto: UILabel = {
         let label = UILabel()
-        label.text = "Photos"
+        label.text = NSLocalizedString("prof_photosTitle", comment: "-")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.backgroundColor = .white

@@ -32,7 +32,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let profileStatus: UILabel = {
         let label = UILabel()
-        label.text = "waiting for something..."
+        label.text = NSLocalizedString("prof_status", comment: "-")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -40,7 +40,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var profileButton = CustomButton(title: "Show status", bgColor: .systemBlue, action: {  [ weak self ] in
+    private lazy var profileButton = CustomButton(title: NSLocalizedString("prof_statusButton", comment: "-"), bgColor: .systemBlue, action: {  [ weak self ] in
         self?.profileStatus.text = self?.statusText
     })
     
@@ -52,7 +52,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        textField.placeholder = " Write your status"
+        textField.placeholder = NSLocalizedString("prof_writeStatus", comment: "-")
         textField.delegate = self
         textField.keyboardType = .default
         textField.returnKeyType = .done

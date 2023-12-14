@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Денис Кузьминов on 11.12.2023.
+  
+*/
+
+//MARK: - Feed screen
+
+"feed_title" = "Posts";
+"feed_tapButton" = "Tap";
+"feed_checkButton" = "Check";
+"feed_mapButton" = "Map";
+"feed_mapButton1" = "Map1";
+
+//MARK: - Authorize
+
+"log_email" = "User email";
+"log_password" = "User password";
+"log_pickupButton" = "Pick up password";
+"log_siginButton" = "Sign in";
+"log_signupButton" = "Sign up";
+
+//MARK: - Profile
+
+"prof_title" = "Posts";
+"prof_status" = "Waiting for something...";
+"prof_writeStatus" = "Write your status";
+"prof_statusButton" = "Show status";
+"prof_photosTitle" = "Photos";
+"prof_likes" = "Likes";
+"prof_views" = "Views";
+
+//MARK: - Photos
+
+"photo_title" = "Photos gallery";
+
+//MARK: - Favorites
+
+"favorite_title" = "Favorite posts";
+"favorite_deleteButton" = "Delete all";
+"favorite_alert" = "Do you want delete all posts?";
+"favorite_deleteButton" = "Delete";
+"favorite_cancelButton" = "Cancel";

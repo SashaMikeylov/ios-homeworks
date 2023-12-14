@@ -57,7 +57,7 @@ class PhotosViewController: UIViewController {
     
     private func tuneView(){
         view.backgroundColor = .white
-        title = "Photo Gallery"
+        title = NSLocalizedString("photo_title", comment: "-")
         view.addSubview(photoCollection)
         view.addSubview(activituIndicator)
     }

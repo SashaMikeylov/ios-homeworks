@@ -175,8 +175,8 @@ final class PostTableViewCell: UITableViewCell {
     func configure(post: Post) {
         titlePost.text = post.author
         descriptionPost.text = post.descrip
-        likesView.text = "Likes: \(post.likes)"
-        viewsView.text = "Views: \(post.views)"
+        likesView.text = NSLocalizedString("prof_likes", comment: "-") + ": \(post.likes)"
+        viewsView.text = NSLocalizedString("prof_views", comment: "-") + ": \(post.views)"
         postView.image = UIImage(named: post.image)
     }
     
