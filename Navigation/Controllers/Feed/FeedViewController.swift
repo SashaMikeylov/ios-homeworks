@@ -24,7 +24,7 @@ class FeedViewController: UIViewController {
         return field
     }()
     
-    private lazy var checkGuessButton = CustomButton(title: NSLocalizedString("feed_checkButton", comment: "-"), bgColor: .systemBlue, action: { [ weak self ] in
+    private lazy var checkGuessButton = CustomButton(title: "Check".localized, bgColor: .systemBlue, action: { [ weak self ] in
         let feed = FeedModel()
         let userWord = self?.wordField.text ?? ""
         if feed.check(word: userWord) == true {
@@ -50,7 +50,7 @@ class FeedViewController: UIViewController {
     private lazy var pushButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("feed_tapButton", comment: "-"), for: .normal)
+        button.setTitle("Tap".localized, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 10
         button.layer.shadowOffset = CGSize(width: 10, height: 10)
@@ -63,7 +63,7 @@ class FeedViewController: UIViewController {
     private lazy var mapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("feed_mapButton", comment: "-"), for: .normal)
+        button.setTitle("Map".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .green
         button.layer.cornerRadius = 10
@@ -75,7 +75,7 @@ class FeedViewController: UIViewController {
     private lazy var mapButton1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("feed_mapButton1", comment: "-"), for: .normal)
+        button.setTitle("Map1".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .green
         button.layer.cornerRadius = 10
@@ -89,8 +89,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("feed_title", comment: "-")
-        view.backgroundColor = .white
+        title = "Posts".localized
+        view.backgroundColor = UIColor(named: "white")
         layout()
     
     }

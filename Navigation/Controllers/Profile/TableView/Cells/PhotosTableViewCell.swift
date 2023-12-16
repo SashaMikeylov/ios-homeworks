@@ -15,7 +15,7 @@ class PhotosTableViewCell: UITableViewCell{
     private let photoView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "gray")
         
         
         return view
@@ -23,10 +23,10 @@ class PhotosTableViewCell: UITableViewCell{
     
     private let titlePhoto: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("prof_photosTitle", comment: "-")
+        label.text = "Photos".localized
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.backgroundColor = .white
+        label.textColor = UIColor(named: "black")
+        label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
         return label
@@ -110,7 +110,7 @@ class PhotosTableViewCell: UITableViewCell{
     }
     
     private func tuneView(){
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "gray")
         accessoryType = .none
         selectionStyle = .none
         

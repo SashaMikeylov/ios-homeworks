@@ -8,38 +8,38 @@
 
 //MARK: - Feed screen
 
-"feed_title" = "Посты";
-"feed_tapButton" = "Нажми";
-"feed_checkButton" = "Проверить";
-"feed_mapButton" = "Карта";
-"feed_mapButton1" = "Карта1";
+"Posts" = "Посты";
+"Tap" = "Нажми";
+"Check" = "Проверить";
+"Map" = "Карта";
+"Map1" = "Карта1";
 
 //MARK: - Authorize
 
-"log_email" = "Почта пользователя";
-"log_password" = "Пароль пользователя";
-"log_pickupButton" = "Подобрать пароль";
-"log_siginButton" = "Войти";
-"log_signupButton" = "Зарегистрироваться";
+"User email" = "Почта пользователя";
+"User password" = "Пароль пользователя";
+"Pick up password" = "Подобрать пароль";
+"Sign in" = "Войти";
+"Sign up" = "Зарегистрироваться";
 
 //MARK: - Profile
 
-"prof_title" = "Посты";
-"prof_status" = "Ожидает чего-то";
-"prof_writeStatus" = "Напишите свой статус";
-"prof_statusButton" = "Показать статус";
-"prof_photosTitle" = "Фотографии";
-"prof_likes" = "Лайки";
-"prof_views" = "Просмотры";
+"Posts" = "Посты";
+"Waiting for something..." = "Ожидает чего-то...";
+"Write your status" = "Напишите свой статус";
+"Show status" = "Показать статус";
+"Photos" = "Фотографии";
+"Likes" = "Лайки";
+"Views" = "Просмотры";
 
 //MARK: - Photos
 
-"photo_title" = "Фотогалерея";
+"Photos gallery" = "Фотогалерея";
 
 //MARK: - Favorites
 
-"favorite_title" = "Избранные посты";
-"favorite_deleteButton" = "Удалить все";
-"favorite_alert" = "Вы хотите удалить посты ?";
-"favorite_deleteButton" = "Удалить";
-"favorite_cancelButton" = "Отменить";
+"Favorite posts" = "Избранные посты";
+"Delete all" = "Удалить все";
+"Do you want delete all posts?" = "Вы хотите удалить посты ?";
+"Delete" = "Удалить";
+"Cancel" = "Отменить";

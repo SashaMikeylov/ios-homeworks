@@ -23,7 +23,7 @@ final class PostTableViewCell: UITableViewCell {
     let postUIView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "gray")
         
         return view
     }()
@@ -32,7 +32,7 @@ final class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.numberOfLines = 2
         
         return label
@@ -61,7 +61,7 @@ final class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         return label
     }()
@@ -70,7 +70,7 @@ final class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         return label
     }()
@@ -103,7 +103,7 @@ final class PostTableViewCell: UITableViewCell {
     }
     
     private func tuneView(){
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "gray")
         accessoryType = .none
         selectionStyle = .none
         
@@ -175,8 +175,8 @@ final class PostTableViewCell: UITableViewCell {
     func configure(post: Post) {
         titlePost.text = post.author
         descriptionPost.text = post.descrip
-        likesView.text = NSLocalizedString("prof_likes", comment: "-") + ": \(post.likes)"
-        viewsView.text = NSLocalizedString("prof_views", comment: "-") + ": \(post.views)"
+        likesView.text = "Likes".localized + ": \(post.likes)"
+        viewsView.text = "Views".localized + ": \(post.views)"
         postView.image = UIImage(named: post.image)
     }
     

@@ -21,7 +21,7 @@ class PhotosViewController: UIViewController {
         let viewLayout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
         collection.translatesAutoresizingMaskIntoConstraints = false
-        
+        collection.backgroundColor = UIColor(named: "white")
         viewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         viewLayout.minimumLineSpacing = 8
         viewLayout.minimumInteritemSpacing = -8
@@ -56,8 +56,8 @@ class PhotosViewController: UIViewController {
     }
     
     private func tuneView(){
-        view.backgroundColor = .white
-        title = NSLocalizedString("photo_title", comment: "-")
+        view.backgroundColor = UIColor(named: "white")
+        title = "Photos gallery".localized
         view.addSubview(photoCollection)
         view.addSubview(activituIndicator)
     }
