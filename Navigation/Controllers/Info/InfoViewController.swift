@@ -22,7 +22,7 @@ final class InfoViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "The person title is"
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         return label
     }()
@@ -30,7 +30,7 @@ final class InfoViewController: UIViewController {
     private lazy var personTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         NetworkService.request(id: 17) { title in
                     DispatchQueue.main.async {
@@ -46,7 +46,7 @@ final class InfoViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Orbital period:"
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         return label
     }()
@@ -54,7 +54,7 @@ final class InfoViewController: UIViewController {
     private lazy var planetInfo: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         NetworkService.request(completion: { planet in
             DispatchQueue.main.async {
                 label.text = planet.orbitlaPeriod
@@ -68,7 +68,7 @@ final class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "white")
         setUp()
         
     }

@@ -9,6 +9,7 @@ class ProfileViewController: UIViewController {
     private let tablePost: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.backgroundColor = UIColor(named: "white")
         
         return table
     }()
@@ -18,11 +19,11 @@ class ProfileViewController: UIViewController {
          super.viewDidLoad()
          
          #if DEBUG
-         view.backgroundColor = .white
+         view.backgroundColor = UIColor(named: "white")
          #else
-         view.backgroundColor = .white
+         view.backgroundColor = UIColor(named: "white")
          #endif
-         title = NSLocalizedString("prof_title", comment: "-")
+         title = "Posts".localized
          tabBarController?.tabBar.isHidden = true
          self.navigationController?.navigationBar.prefersLargeTitles = true
          

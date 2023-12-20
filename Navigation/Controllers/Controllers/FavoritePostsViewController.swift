@@ -14,7 +14,7 @@ final class FavoritePostsViewControllerL: UIViewController {
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        
+        table.backgroundColor = UIColor(named: "white")
         return table
     }()
     
@@ -22,8 +22,8 @@ final class FavoritePostsViewControllerL: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = NSLocalizedString("favorite_title", comment: "-")
+        view.backgroundColor = UIColor(named: "white")
+        title = "Favorite posts".localized
         navigationController?.navigationBar.prefersLargeTitles = true
         layout()
         tableTune()
@@ -58,17 +58,17 @@ final class FavoritePostsViewControllerL: UIViewController {
     
     
     private func navBarTune() {
-        let navBarButtton = UIBarButtonItem(title: NSLocalizedString("favorite_deleteButton", comment: "-"), style: .plain, target: self, action: #selector(barButtonAcion))
+        let navBarButtton = UIBarButtonItem(title: "Delete all".localized, style: .plain, target: self, action: #selector(barButtonAcion))
         navigationItem.rightBarButtonItem = navBarButtton
     }
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "", message: NSLocalizedString("favorite_alert", comment: "-"), preferredStyle: .alert)
-        let alertAction1 = UIAlertAction(title: NSLocalizedString("favorite_deleteButton", comment: "-"), style: .default) { _ in
+        let alertController = UIAlertController(title: "", message: "Do you wan't delete all posts?".localized, preferredStyle: .alert)
+        let alertAction1 = UIAlertAction(title: "Delete".localized, style: .default) { _ in
             CoreDataService.shared.deletePosts()
             self.tableView.reloadData()
         }
-        let alertAction2 = UIAlertAction(title: NSLocalizedString("favorite_cancelButton" , comment: "-"), style: .cancel)
+        let alertAction2 = UIAlertAction(title: "Cancel".localized, style: .cancel)
         alertController.addAction(alertAction2)
         alertController.addAction(alertAction1)
         present(alertController, animated: true)

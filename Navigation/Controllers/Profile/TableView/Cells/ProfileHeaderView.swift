@@ -11,7 +11,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         let nameLabel = UILabel()
         nameLabel.text = "Sanya Mikeylov "
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(named: "black")
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         return nameLabel
@@ -32,7 +32,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let profileStatus: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("prof_status", comment: "-")
+        label.text = "Waiting for something...".localized
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -40,7 +40,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var profileButton = CustomButton(title: NSLocalizedString("prof_statusButton", comment: "-"), bgColor: .systemBlue, action: {  [ weak self ] in
+    private lazy var profileButton = CustomButton(title: "Show status".localized, bgColor: .systemBlue, action: {  [ weak self ] in
         self?.profileStatus.text = self?.statusText
     })
     
@@ -52,7 +52,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        textField.placeholder = NSLocalizedString("prof_writeStatus", comment: "-")
+        textField.placeholder = "Write your status"
         textField.delegate = self
         textField.keyboardType = .default
         textField.returnKeyType = .done
@@ -75,9 +75,8 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     //MARK: - Init
     
     override init(reuseIdentifier: String?) {
-        
         super.init(reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .lightGray
+        backgroundColor = .cyan
         
         
         setUp()

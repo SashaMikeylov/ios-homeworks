@@ -54,6 +54,7 @@
 		24C1E33F2A5C2CEA0043B15E /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C1E3292A5C2CE90043B15E /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24CC02FC2AC753010062B768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24CC02FB2AC753010062B768 /* GoogleService-Info.plist */; };
 		24CCEBDA2B273FD6003A69CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24CCEBDC2B273FD6003A69CD /* Localizable.strings */; };
+		24CCEBDF2B2B9B14003A69CD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CCEBDE2B2B9B14003A69CD /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		24CC02FB2AC753010062B768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24CCEBDB2B273FD6003A69CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24CCEBDD2B273FD7003A69CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24CCEBDE2B2B9B14003A69CD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				24A604752A7BADF000737A5B /* CustomButton.swift */,
+				24CCEBDE2B2B9B14003A69CD /* StringExtension.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				24A28A2C2A6A7F0600C5E395 /* Users.swift in Sources */,
 				240E9FC32AECDDD900E93890 /* CoreDataService.swift in Sources */,
 				249E03612A69B08D0055CADE /* UserService.swift in Sources */,
+				24CCEBDF2B2B9B14003A69CD /* StringExtension.swift in Sources */,
 				247E51692A2743F000E3C6AB /* ProfileViewController.swift in Sources */,
 				24B9FEAC2A433B7E00E546AD /* PhotosTableViewCell.swift in Sources */,
 				24B517732AADB5F900573BE7 /* BruteForceService.swift in Sources */,
