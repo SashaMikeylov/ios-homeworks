@@ -8,13 +8,21 @@
 import UIKit
 import FirebaseCore
 import CoreData
+import UserNotifications
 
 @main class AppDelegate: UIResponder, UIApplicationDelegate {
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Thread.sleep(forTimeInterval: 1)
+        LocalNotificationsService().request()
+        LocalNotificationsService().registeForLatestUpdatesIfPossible()
+
         return true
+    }
+    
+
     }
 
     // MARK: UISceneSession Lifecycle
@@ -29,28 +37,37 @@ import CoreData
         
     }
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Navigation")
-        container.loadPersistentStores { description, error in
-            if let error {
-                print(error.localizedDescription)
-            } else {
-                print("Url data base ----", description.url)
-            }
-        }
-        return container
-    }()
+//    lazy var persistentContainer: NSPersistentContainer = {
+//        let container = NSPersistentContainer(name: "Navigation")
+//        container.loadPersistentStores { description, error in
+//            if let error {
+//                print(error.localizedDescription)
+//            } else {
+//                print("Url data base ----", description.url)
+//            }
+//        }
+//        return container
+//    }()
 
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let error = error as? NSError
-                fatalError(error!.localizedDescription)
-            }
-        }
+//    func saveContext() {
+//        let context = persistentContainer.viewContext
+//        if context.hasChanges {
+//            do {
+//                try context.save()
+//            } catch {
+//                let error = error as? NSError
+//                fatalError(error!.localizedDescription)
+//            }
+//        }
+//    }
+//}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .banner, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Message")
     }
 }
-

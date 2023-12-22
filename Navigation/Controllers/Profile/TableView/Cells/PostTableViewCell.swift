@@ -197,7 +197,7 @@ final class PostTableViewCell: UITableViewCell {
         
         let postik = Post(author: author, descrip: descrip, image: image, views: views, likes: likes)
       
-        CoreDataService.shared.savePost(postik)
+       // CoreDataService.shared.savePost(postik)
         
         favoriteChecker.backgroundColor = .systemYellow
      

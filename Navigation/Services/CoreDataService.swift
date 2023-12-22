@@ -10,61 +10,61 @@ import CoreData
 import StorageService
 
 
-final class CoreDataService: NSObject {
-    public static let shared = CoreDataService()
-    private override init() {}
+//final class CoreDataService: NSObject {
+//    public static let shared = CoreDataService()
+//    private override init() {}
+//    
+//    private var appDelegate: AppDelegate {
+//        UIApplication.shared.delegate as! AppDelegate
+//    }
+//    
+//    private var context: NSManagedObjectContext {
+//        appDelegate.persistentContainer.viewContext
+//    }
+//    
+//    public func savePost(_ post: Post) {
+//        guard let postEnityDescription = NSEntityDescription.entity(forEntityName: "PostDataModel", in: context) else {return}
+//        let dataPost = PostDataModel(entity: postEnityDescription, insertInto: context)
+//        
+//        dataPost.author = post.author
+//        dataPost.image = post.image
+//        dataPost.descrip = post.descrip
+//        dataPost.likes = post.likes
+//        dataPost.views = post.views
+//        
+//        appDelegate.saveContext()
+//    }
+//    
+//    public func fetchPosts() -> [Post] {
+//        let fetchRequest = PostDataModel.fetchRequest()
+//       
+//        do {
+//            let posts = try context.fetch(fetchRequest)
+//            return posts.map {Post(postCoreDataModel: $0)}
+//        } catch {
+//            print(error.localizedDescription)
+//            return []
+//        }
+//    }
+//    
+//    public func deletePosts() {
+//        let fetchRequest = PostDataModel.fetchRequest()
+//        
+//        do {
+//            var posts = try context.fetch(fetchRequest)
+//            posts.forEach {
+//                context.delete($0)
+//            }
+//            
+//            appDelegate.saveContext()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
     
-    private var appDelegate: AppDelegate {
-        UIApplication.shared.delegate as! AppDelegate
-    }
-    
-    private var context: NSManagedObjectContext {
-        appDelegate.persistentContainer.viewContext
-    }
-    
-    public func savePost(_ post: Post) {
-        guard let postEnityDescription = NSEntityDescription.entity(forEntityName: "PostDataModel", in: context) else {return}
-        let dataPost = PostDataModel(entity: postEnityDescription, insertInto: context)
         
-        dataPost.author = post.author
-        dataPost.image = post.image
-        dataPost.descrip = post.descrip
-        dataPost.likes = post.likes
-        dataPost.views = post.views
-        
-        appDelegate.saveContext()
-    }
     
-    public func fetchPosts() -> [Post] {
-        let fetchRequest = PostDataModel.fetchRequest()
-       
-        do {
-            let posts = try context.fetch(fetchRequest)
-            return posts.map {Post(postCoreDataModel: $0)}
-        } catch {
-            print(error.localizedDescription)
-            return []
-        }
-    }
-    
-    public func deletePosts() {
-        let fetchRequest = PostDataModel.fetchRequest()
-        
-        do {
-            var posts = try context.fetch(fetchRequest)
-            posts.forEach {
-                context.delete($0)
-            }
-            
-            appDelegate.saveContext()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-        
-    
-}
+//}
 
 
 //
