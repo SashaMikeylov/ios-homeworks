@@ -65,7 +65,7 @@ final class FavoritePostsViewControllerL: UIViewController {
     private func showAlert() {
         let alertController = UIAlertController(title: "", message: "Do you wan't delete all posts?".localized, preferredStyle: .alert)
         let alertAction1 = UIAlertAction(title: "Delete".localized, style: .default) { _ in
-            CoreDataService.shared.deletePosts()
+            //CoreDataService.shared.deletePosts()
             self.tableView.reloadData()
         }
         let alertAction2 = UIAlertAction(title: "Cancel".localized, style: .cancel)
@@ -86,14 +86,15 @@ final class FavoritePostsViewControllerL: UIViewController {
 extension FavoritePostsViewControllerL: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CoreDataService.shared.fetchPosts().count
+        3
+        //CoreDataService.shared.fetchPosts().count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
         
-        cell.configure(post: CoreDataService.shared.fetchPosts()[indexPath.row])
+       // cell.configure(post: CoreDataService.shared.fetchPosts()[indexPath.row])
         return cell
     }
     
