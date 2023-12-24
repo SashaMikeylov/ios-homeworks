@@ -196,6 +196,22 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    private lazy var faceIdButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Face id", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
+        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.addTarget(self, action: #selector(faceIdAction), for: .touchUpInside)
+        button.makeSystem()
+        
+        return button
+    }()
+    
     //MARK: -Life
     
     override func viewDidLoad() {
@@ -235,7 +251,9 @@ class LogInViewController: UIViewController {
         contenView.addSubview(helpButton)
         passwordView.addSubview(passwordActivityIndicator)
         contenView.addSubview(signUpButton)
+        contenView.addSubview(faceIdButton)
     }
+    
     //MARK: -SetUp
     
     private func setUp(){
@@ -308,6 +326,11 @@ class LogInViewController: UIViewController {
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
             signUpButton.widthAnchor.constraint(equalToConstant: 90),
+            
+            faceIdButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 25),
+            faceIdButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            faceIdButton.heightAnchor.constraint(equalToConstant: 50),
+            faceIdButton.widthAnchor.constraint(equalToConstant: 120),
         ])
     }
     
@@ -324,8 +347,11 @@ class LogInViewController: UIViewController {
     
     private func SignIn() {
         
+
+        LocalAuthorizationService.shared.checkForViewControler(coordinator)
         
-        coordinator?.showProfile()
+        
+//        coordinator?.showProfile()
 //        if passwordFeed.text!.isEmpty || emailFeed.text!.isEmpty {
 //            allert(error: .emptyField)
 //        }
@@ -423,6 +449,14 @@ class LogInViewController: UIViewController {
     
     @objc private func signUp() {
         checkCredentials()
+    }
+    
+    @objc private func faceIdAction() {
+        LocalAuthorizationService.shared.authorizeIfPossible {[weak self] isSucces in
+            if isSucces {
+                LocalAuthorizationService.shared.checkForViewControler(self?.coordinator)
+            }
+        }
     }
 }
 

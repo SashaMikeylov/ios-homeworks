@@ -20,7 +20,6 @@ final class LocalNotificationsService {
         notificationCenter.requestAuthorization(options: [.badge, .sound, .provisional]) { isSuccess, error in
             guard isSuccess else {return}
             self.notificationCenter.getNotificationSettings { settings in
-                print(settings)
                 guard settings.authorizationStatus == .authorized else {return}
             }
         }

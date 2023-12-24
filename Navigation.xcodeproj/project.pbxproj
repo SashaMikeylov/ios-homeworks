@@ -53,6 +53,7 @@
 		24C1E33E2A5C2CEA0043B15E /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C1E3292A5C2CE90043B15E /* StorageService.framework */; };
 		24C1E33F2A5C2CEA0043B15E /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C1E3292A5C2CE90043B15E /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24CABCF82B36267E0024DA36 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CABCF72B36267E0024DA36 /* LocalNotificationsService.swift */; };
+		24CABCFA2B38423F0024DA36 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CABCF92B38423F0024DA36 /* LocalAuthorizationService.swift */; };
 		24CC02FC2AC753010062B768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24CC02FB2AC753010062B768 /* GoogleService-Info.plist */; };
 		24CCEBDA2B273FD6003A69CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24CCEBDC2B273FD6003A69CD /* Localizable.strings */; };
 		24CCEBDF2B2B9B14003A69CD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CCEBDE2B2B9B14003A69CD /* StringExtension.swift */; };
@@ -141,6 +142,7 @@
 		24C1E3322A5C2CEA0043B15E /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C1E3392A5C2CEA0043B15E /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 		24CABCF72B36267E0024DA36 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
+		24CABCF92B38423F0024DA36 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		24CC02FB2AC753010062B768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24CCEBDB2B273FD6003A69CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24CCEBDD2B273FD7003A69CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				240E9FC22AECDDD900E93890 /* CoreDataService.swift */,
 				240E9FD42AEEFA2300E93890 /* Navigation.xcdatamodeld */,
 				24CABCF72B36267E0024DA36 /* LocalNotificationsService.swift */,
+				24CABCF92B38423F0024DA36 /* LocalAuthorizationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				24B9FEB32A44ECA400E546AD /* PhotoCell.swift in Sources */,
 				240E9FD62AEEFA2300E93890 /* Navigation.xcdatamodeld in Sources */,
 				24AAB6B12AB6FCE3004FF90F /* NetworkService.swift in Sources */,
+				24CABCFA2B38423F0024DA36 /* LocalAuthorizationService.swift in Sources */,
 				249CDD9F2A3F9081002C4EA5 /* PostTableViewCell.swift in Sources */,
 				247E51622A1D378900E3C6AB /* PostViewController.swift in Sources */,
 				24A604792A7C592C00737A5B /* FeedModel.swift in Sources */,
@@ -768,6 +772,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "For your safety";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please give location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -799,6 +804,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "For your safety";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please give location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
