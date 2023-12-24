@@ -88,7 +88,11 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        LocalAuthorizationService.shared.authorizeIfPossible { isSucses in
+            if isSucses {
+                print("nice")
+            }
+        }
         title = "Posts".localized
         view.backgroundColor = UIColor(named: "white")
         layout()
